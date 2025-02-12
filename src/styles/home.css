@@ -1,0 +1,32 @@
+.home-container {
+  height: 90vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #0d1117;
+  text-align: center;
+}
+
+.title {
+  font-size: 50px;
+  font-weight: bold;
+  color: #58a6ff;
+  text-shadow: 0 0 10px #58a6ff, 0 0 20px #1f6feb;
+  animation: glow 1.5s infinite alternate;
+}
+
+.subtitle {
+  font-size: 18px;
+  margin-top: 10px;
+  color: #c9d1d9;
+}
+
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #58a6ff, 0 0 20px #1f6feb;
+  }
+  to {
+    text-shadow: 0 0 20px #58a6ff, 0 0 40px #1f6feb;
+  }
+}

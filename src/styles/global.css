@@ -1,0 +1,27 @@
+body {
+  margin: 0;
+  font-family: "Arial", sans-serif;
+  background-color: #1E3A8A; /* Deep Blue Background */
+  color: #000000; /* Black Text */
+  text-align: center;
+}
+
+h1, h2, h3 {
+  color: #ffffff; /* White for headings */
+}
+
+a {
+  text-decoration: none;
+  color: #ffffff;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: #c9d1d9;
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 20px;
+}

@@ -1,0 +1,62 @@
+/* Ensure dark background for the page */
+.contact-container {
+    max-width: 500px;
+    margin: 80px auto;
+    padding: 30px;
+    background: #194288;
+    text-align: center;
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
+  
+  /* Make sure inputs are stacked and centered */
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    margin-top: 20px;
+  }
+  
+  /* Input fields styling */
+  input,
+  textarea {
+    width: 90%;
+    padding: 12px;
+    background: #0d1117;
+    color: white;
+    border: 1px solid #58a6ff;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  
+  /* Fix textarea height */
+  textarea {
+    height: 120px;
+    resize: none;
+  }
+  
+  /* Style the button */
+  button {
+    width: 50%;
+    margin: 0 auto;
+    padding: 12px;
+    background: #58a6ff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  /* Button hover effect */
+  button:hover {
+    background: #1f6feb;
+  }
+  
+  /* Fix the background of the page */
+  body {
+    background-color: #ffffff !important;
+  }
+  
