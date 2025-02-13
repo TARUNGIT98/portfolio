@@ -1,62 +1,93 @@
-/* Ensure dark background for the page */
-.contact-container {
-    max-width: 500px;
-    margin: 80px auto;
-    padding: 30px;
-    background: #194288;
-    text-align: center;
-    color: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Make sure inputs are stacked and centered */
-  form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    margin-top: 20px;
-  }
-  
-  /* Input fields styling */
-  input,
-  textarea {
-    width: 90%;
-    padding: 12px;
-    background: #0d1117;
-    color: white;
-    border: 1px solid #58a6ff;
-    border-radius: 5px;
-    font-size: 16px;
-  }
-  
-  /* Fix textarea height */
-  textarea {
-    height: 120px;
-    resize: none;
-  }
-  
-  /* Style the button */
-  button {
-    width: 50%;
-    margin: 0 auto;
-    padding: 12px;
-    background: #58a6ff;
-    color: white;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: 0.3s;
-  }
-  
-  /* Button hover effect */
-  button:hover {
-    background: #1f6feb;
-  }
-  
-  /* Fix the background of the page */
-  body {
-    background-color: #ffffff !important;
-  }
-  
+.contact-container 
+{
+  width: 100%;
+  max-width: 1000px; /* Adjust width to fit design */
+  margin: 50px auto;
+  padding: 30px;
+  background: #114ea2; /* Dark background */
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  text-align: center;
+  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Hover effect */
+.contact-container:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+}
+
+/* Style for heading */
+.contact-container h1 {
+  color: white;
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+/* Subtitle */
+.contact-container p {
+  color: #ffffff;
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+/* Form Layout */
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 15px;
+}
+
+/* Input Row: Name and Email */
+.input-row 
+{
+  align-items: first baseline;
+  display: flex;
+  gap: 10px;
+  width: 90%; /* Aligns with textarea */
+}
+
+/* Ensure both fields together match message box width */
+.input-row input {
+  flex: 1; /* Make both fields take equal space */
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+}
+
+/* Align Message box with inputs */
+textarea {
+  width: 90%;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  background: white;
+  color: #333;
+  font-size: 14px;
+  outline: none;
+  height: 120px;
+  resize: none;
+}
+
+/* Center the button */
+button {
+  width: 200px;
+  padding: 12px 18px;
+  background: #4a90e2;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+button:hover {
+  background: #1f6feb;
+}

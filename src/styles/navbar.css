@@ -1,33 +1,62 @@
 .navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Ensures proper spacing */
   align-items: center;
-  padding: 5px 25px;
-  background: #1E3A8A;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  padding: 15px 30px;
+  background: #ffffff; /* Solid initially */
+  transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
+  z-index: 1000;
 }
 
+/* Transparent effect when scrolling */
+.navbar.scrolled {
+  background: rgba(166, 169, 174, 0.7);
+  backdrop-filter: blur(10px);
+  padding: 10px 30px;
+}
+
+.navbar h1 {
+  font-size: 24px;
+  color: black;
+}
+
+/* Ensure the logo stays on the left */
 .logo {
-  font-size: 20px;
+  font-size: 24px;
   font-weight: bold;
-  font-family: Helvetica;
-  color: #ffffff;
+  color: white;
 }
 
+/* Fix Navbar Links Container */
 .nav-links {
   display: flex;
   gap: 20px;
+  align-items: center;
+  margin-left: auto; /* Pushes links to the right */
+  padding-right: 50px; /* Ensures right alignment */
 }
 
-.nav-links a 
-{
-  text-decoration: none; 
-  font-weight: bold;
+/* Navbar links */
+.nav-links a {
+  color: rgb(0, 0, 0);
+  text-decoration: none;
   font-size: 16px;
-  color: #ffffff;
-  transition: 0.3s;
+  transition: color 0.3s ease;
+  white-space: nowrap; /* Prevents links from wrapping */
 }
 
+/* Ensure links remain visible */
 .nav-links a:hover {
-  color: #2981d9;
+  color: #58a6ff;
+}
+
+/* Fix Navbar on Small Screens */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
 }

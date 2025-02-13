@@ -42,8 +42,8 @@
 
 /* Outlined Button */
 .btn.outline {
-  border: 2px solid #1E3A8A;
-  color: #1E3A8A;
+  border: 2px solid #114ea2;
+  color: #114ea2;
   background: transparent;
   padding: 8px 12px;
   text-decoration: none;
@@ -52,13 +52,13 @@
 }
 
 .btn.outline:hover {
-  background: #1E3A8A;
+  background: #114ea2;
   color: white;
 }
 
 /* Filled Button */
 .btn.filled {
-  background: #1E3A8A;
+  background: #114ea2;
   color: white;
   border: none;
   padding: 8px 12px;
