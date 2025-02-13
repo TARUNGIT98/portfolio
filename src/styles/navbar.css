@@ -2,14 +2,15 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 50px;
+  padding: 5px 25px;
   background: #1E3A8A;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .logo {
-  font-size: 24px;
+  font-size: 20px;
   font-weight: bold;
+  font-family: Helvetica;
   color: #ffffff;
 }
 
@@ -18,12 +19,15 @@
   gap: 20px;
 }
 
-.nav-links a {
+.nav-links a 
+{
+  text-decoration: none; 
+  font-weight: bold;
   font-size: 16px;
   color: #ffffff;
   transition: 0.3s;
 }
 
 .nav-links a:hover {
-  color: #c9d1d9;
+  color: #2981d9;
 }

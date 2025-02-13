@@ -1,26 +1,39 @@
-import { motion } from "framer-motion";
 import "../styles/home.css";
+import { FaGithub ,FaLinkedin, FaFileAlt  } from "react-icons/fa";
+import tarunImage from "../assets/TarunHeadshot.jpg";
 
 function Home() {
   return (
-    <motion.div
-      className="home-container"
-      initial={{ opacity: 0, scale: 0.9 }}
-      animate={{ opacity: 1, scale: 1 }}
-      transition={{ duration: 0.8 }}
-    >
-      <motion.h1 className="title" whileHover={{ scale: 1.05 }}>
-        Hello, I'm Tarun
-      </motion.h1>
-      <motion.p
-        className="subtitle"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.5, duration: 0.8 }}
-      >
-        AI/ML Developer | Software Engineer
-      </motion.p>
-    </motion.div>
+    <div className="home-container">
+      <div className ="home-content">
+        <div className="home-text">
+          <p className="intro-text">Welcome to my portfolio</p>
+          <h1>
+            Hello, I'm <span className="highlight">Tarun</span>
+          </h1>
+          <h2><strong>Software Engineer</strong></h2>
+          <p className="description">
+            With a background in Deep Learning and Software Developement<br />
+            I specialize in creating efficient, scalable, and user-friendly applications. <br />
+            Passionate about problem-solving and AI-driven innovations.
+          </p>
+          <div className="buttons">
+            <a href="https://linkedin.com/saitarunisrapurapu" target="_blank" rel="noopener noreferrer" className="btn">
+              <FaLinkedin className="icon" /> LinkedIn
+            </a>
+            <a href="https://github.com/TARUNGIT98" target="_blank" rel="noopener noreferrer" className="btn">
+              <FaGithub className="icon" /> GitHub
+            </a>
+            <a href="/resume.pdf" download className="btn">
+              <FaFileAlt className="icon" /> Resume
+            </a>
+          </div>
+        </div>
+        <div className="home-image">
+            <img src={tarunImage} alt="Tarun Sirapurapu" />
+        </div>
+      </div>
+    </div>
   );
 }
 
