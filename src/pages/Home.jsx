@@ -14,7 +14,7 @@ function Home() {
           <h2><strong>Software Engineer</strong></h2>
           <p className="description">
             With a background in Deep Learning and Software Developement<br />
-            I specialize in creating efficient, scalable, and user-friendly applications. <br />
+            I specialize in creating efficient, scalable, and user-friendly applications.
             Passionate about problem-solving and AI-driven innovations.
           </p>
           <div className="buttons">

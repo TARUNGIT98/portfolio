@@ -20,6 +20,8 @@
   gap: 50px;
 }
 
+
+
 /* Left Side Text */
 .home-text {
   flex: 1;
@@ -81,13 +83,14 @@ h2 {
   transition: 0.3s;
 }
 
+
 .btn:hover {
   background: #153474;
 }
 
 .icon {
-  color: white;
-  font-size: 24px;
+  color: white !important;
+  font-size: 24px !important;
 }
 
 /* Right Side Image */

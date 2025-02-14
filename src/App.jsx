@@ -2,7 +2,6 @@ import{ useEffect } from "react"; // idhi import chesi, useEffect hook ni use ch
 import Home from "./pages/Home";
 import Projects from "./pages/Projects";
 import Skills from "./pages/Skills";
-import Resume from "./pages/Resume";
 import Contact from "./pages/Contact";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -32,7 +31,6 @@ function App() {
         <section id="home"><Home /></section>
         <section id="projects"><Projects /></section>
         <section id="skills"><Skills /></section>
-        <section id="resume"><Resume /></section>
         <section id="contact"><Contact /></section>
       </div>
       <Footer />

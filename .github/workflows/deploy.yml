@@ -1,3 +1,9 @@
+# 👉 What This Does:
+# ✅ Runs automatically when you push to main
+# ✅ Installs dependencies & builds the project
+# ✅ Deploys to GitHub Pages automatically
+
+
 name: Deploy to GitHub Pages
 
 on:
