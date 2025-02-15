@@ -1,5 +1,6 @@
 .projects-container {
-  max-width: 1100px;
+  width : 100%;
+  max-width: 1300px;
   margin: 50px auto;
   padding: 20px;
   text-align: center;
@@ -9,28 +10,30 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* Two columns */
-  gap: 20px;
+  gap: 40px;
   margin-top: 20px;
 }
 
-.project-card {
+.project-card 
+{
   display: flex;
   align-items: center;
   background: white;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
   text-align: left;
 }
 
 .project-image {
-  width: 150px;
-  height: auto;
+  width: 280px;
+  height: 175px;
   border-radius: 8px;
   margin-right: 20px;
 }
 
 .project-details {
+  color: #102B6A;
   flex: 1;
 }
 

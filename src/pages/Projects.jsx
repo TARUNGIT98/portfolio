@@ -1,16 +1,19 @@
 import "../styles/projects.css";
+import reaImage from "../assets/rea.jpg";
 
 function Projects() {
   return (
     <div className="projects-container">
-      <h1>Projects</h1>
+      <h2>Projects</h2>
       <div className="projects-grid">
         <div className="project-card">
-          <img src="https://via.placeholder.com/150" alt="AI Image Classifier" className="project-image" />
+          <img src={reaImage} alt="Regression" className="project-image" />
           <div className="project-details">
-            <h3>AI Image Classifier</h3>
-            <p>Deep learning project for real-time image recognition.</p>
-            <p><strong>Tech Used:</strong> React, TensorFlow, Flask</p>
+            <h2>Real Estate Analysis</h2>
+            <p>Deep learning project for real-estate price prediction.
+              Using linear regression and polynomial regression models.
+            </p>
+            <p><strong>Tech Used:</strong> Python, pandas, Flask</p>
             <div className="button-group">
               <a href="#" className="btn outline">Demo</a>
               <a href="#" className="btn filled">Source Code</a>
@@ -21,7 +24,7 @@ function Projects() {
         <div className="project-card">
           <img src="https://via.placeholder.com/150" alt="Chatbot AI" className="project-image" />
           <div className="project-details">
-            <h3>Chatbot AI</h3>
+            <h2>Chatbot AI</h2>
             <p>AI chatbot using NLP and machine learning.</p>
             <p><strong>Tech Used:</strong> React, OpenAI GPT, Node.js</p>
             <div className="button-group">
