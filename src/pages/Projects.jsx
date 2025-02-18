@@ -1,5 +1,5 @@
 import "../styles/projects.css";
-import reaImage from "../assets/rea.jpg";
+import reaImage from "../assets/REA.jpg";
 
 function Projects() {
   return (
