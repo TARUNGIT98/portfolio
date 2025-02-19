@@ -58,7 +58,7 @@ function Contact() {
           />
           <input
             type="text"
-            name="contact"
+            name="email"
             placeholder="Email / Phone *"
             value={formData.contact}
             onChange={handleChange}
