@@ -10,8 +10,9 @@ function Projects() {
           <img src={reaImage} alt="Regression" className="project-image" />
           <div className="project-details">
             <h2>Real Estate Analysis</h2>
-            <p>Deep learning project for real-estate price prediction.
-              Using linear regression and polynomial regression models.
+            <p>Regression model for real-estate price prediction.
+              Developed using python on backend and react on front end.
+              Deployed on AWS EC2 service.
             </p>
             <p><strong>Tech Used:</strong> Python, pandas, Flask</p>
             <div className="button-group">
