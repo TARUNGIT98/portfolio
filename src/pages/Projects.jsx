@@ -14,10 +14,10 @@ function Projects() {
               Developed using python on backend and react on front end.
               Deployed on AWS EC2 service.
             </p>
-            <p><strong>Tech Used:</strong> Python, pandas, Flask</p>
+            <p><strong>Tech Used:</strong> Python, pandas, Flask, React</p>
             <div className="button-group">
-              <a href="#" className="btn outline">Demo</a>
-              <a href="#" className="btn filled">Source Code</a>
+              <a href="http://ec2-18-116-72-123.us-east-2.compute.amazonaws.com/" className="btn outline">Demo</a>
+              <a href="https://github.com/TARUNGIT98/RealEstateAnalysis" className="btn filled">Source Code</a>
             </div>
           </div>
         </div>
