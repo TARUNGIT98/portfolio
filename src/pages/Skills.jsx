@@ -1,12 +1,13 @@
 import "../styles/skills.css";
 import { FaReact, FaPython, FaNodeJs } from "react-icons/fa";
-import { 
-  SiTensorflow, 
-  SiPytorch, 
-  SiOpenjdk, 
-  SiHtml5, 
-  SiCss3, 
-  SiGithub
+import {
+  SiTensorflow,
+  SiPytorch,
+  SiOpenjdk,
+  SiHtml5,
+  SiCss3,
+  SiGithub,
+  SiFlask
 } from "react-icons/si";
 
 const skillsData = [
@@ -16,7 +17,8 @@ const skillsData = [
   { name: "React", icon: <FaReact className="skill-icon react" /> },
   { name: "CSS", icon: <SiCss3 className="skill-icon css" /> },
   { name: "GitHub", icon: <SiGithub className="skill-icon github" /> },
-  { name: "Pytorch", icon: <SiPytorch className="skill-icon pytorch" /> }
+  { name: "Pytorch", icon: <SiPytorch className="skill-icon pytorch" /> },
+  { name: "Flask", icon: <SiFlask classNmae="skill-icon flask" /> }
 ];
 
 function Skills() {
