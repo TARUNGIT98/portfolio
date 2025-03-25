@@ -1,6 +1,7 @@
 import "../styles/projects.css";
 import reaImage from "../assets/REA.jpg";
 import mega from "../assets/megasandesham.jpg";
+import nc from "../assets/newscurator.jpg";
 
 function Projects() {
   return (
@@ -55,17 +56,16 @@ function Projects() {
         </div>
 
         <div className="project-card">
-          <img src={mega} alt="Climate App" className="project-image" />
+          <img src={nc} alt="Climate App" className="project-image" />
           <div className="project-details">
-            <h2>Megasandesham!</h2>
+            <h2>AI News Curator</h2>
             <p>
               Personalized News Curator is a full-stack application that curates real-time news based on user preferences and selected regions.
               The backend fetches top headlines via NewsAPI and uses an AI filtering service (leveraging DJL,Hugging Face and semantic embeddings) to rank and refine articles.
-              Users can customize news categories and regions, ensuring a tailored news feed. The React frontend, styled with Tailwind CSS, provides an interactive and modern UI.
-              The application is containerized with Docker and deployed on cloud platforms for global access.
+              Users can customize news categories and regions, ensuring a tailored news feed.
               Still working on refining the articles when it comes to differnt regions and ultimate goal is to have a simple prompt to pull all necessary articles.!
             </p>
-            <p><strong>Tech Used:</strong> React, Tailwind CSS</p>
+            <p><strong>Tech Used:</strong> Java, DJL, React, Docker, Postgres, Render</p>
             <div className="button-group">
               <a href="https://ainewscurator.netlify.app/" className="btn outline">Demo</a>
               <a href="https://github.com/TARUNGIT98/newsAggregator-backend" className="btn filled">Back End</a>
