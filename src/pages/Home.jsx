@@ -1,7 +1,7 @@
 import "../styles/home.css";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 import tarunImage from "../assets/TarunHeadshot.jpg";
-import resume from "public/SaiTarunSirapurapu_Resume'.pdf";
+import resume from "../assets/SaiTarunSirapurapu_Resume'.pdf";
 
 function Home() {
   return (
