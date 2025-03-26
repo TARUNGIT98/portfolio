@@ -8,3 +8,16 @@
   padding: 60px 30px;
 }
 
+.quote-banner {
+  background-color: #f3f4f6;
+  padding: 16px 24px;
+  text-align: center;
+  font-style: italic;
+  font-size: 1rem;
+  color: #4b5563;
+  border-bottom: 1px solid #e5e7eb;
+  margin-top: 70px; /* Push below fixed navbar */
+  z-index: 1;
+  position: relative;
+}
+

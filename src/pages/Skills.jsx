@@ -1,31 +1,32 @@
 import "../styles/skills.css";
-import { FaReact, FaPython, FaNodeJs } from "react-icons/fa";
+import { FaReact, FaPython, FaAws, FaDocker } from "react-icons/fa";
 import {
   SiTensorflow,
   SiPytorch,
   SiOpenjdk,
-  SiHtml5,
   SiCss3,
-  SiGithub,
-  SiFlask
+  SiFlask,
+  SiSpring
 } from "react-icons/si";
 
 const skillsData = [
   { name: "Java", icon: <SiOpenjdk className="skill-icon java" /> },
   { name: "Python", icon: <FaPython className="skill-icon python" /> },
   { name: "TensorFlow", icon: <SiTensorflow className="skill-icon tensorflow" /> },
+  { name: "PyTorch", icon: <SiPytorch className="skill-icon pytorch" /> },
+  { name: "Spring", icon: <SiSpring className="skill-icon spring" /> },
+  { name: "Flask", icon: <SiFlask className="skill-icon flask" /> },
   { name: "React", icon: <FaReact className="skill-icon react" /> },
   { name: "CSS", icon: <SiCss3 className="skill-icon css" /> },
-  { name: "GitHub", icon: <SiGithub className="skill-icon github" /> },
-  { name: "Pytorch", icon: <SiPytorch className="skill-icon pytorch" /> },
-  { name: "Flask", icon: <SiFlask classNmae="skill-icon flask" /> }
+  { name: "AWS", icon: <FaAws className="skill-icon aws" /> },
+  { name: "Docker", icon: <FaDocker className="skill-icon docker" /> },
 ];
 
 function Skills() {
   return (
     <div className="skills-container">
-      <h1>Skills that are currently in use</h1>
-      <div className="skills-grid">
+      <h2 className="skills-heading">Technologies Most Used</h2>
+      <div className="skills-scroll">
         {skillsData.map((skill, index) => (
           <div key={index} className="skill-card">
             {skill.icon}

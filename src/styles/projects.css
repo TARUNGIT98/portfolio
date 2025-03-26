@@ -4,7 +4,7 @@
   margin: 60px auto;
   padding: 20px;
   text-align: center;
-  color: white;
+  color: rgb(6, 5, 5);
 }
 
 .projects-container h2 {
@@ -57,7 +57,7 @@
   font-size: 1.25rem;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: white;
+  color: rgb(10, 9, 9);
 }
 
 .project-details p {

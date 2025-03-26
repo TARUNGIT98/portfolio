@@ -38,7 +38,10 @@ function CareerPath() {
             <div className="career-scroll">
                 <div className="career-line" />
                 {timeline.map((item, index) => (
-                    <div className="career-card" key={index}>
+                    <div className="career-card"
+                        key={index}
+                        data-aos="fade-up"
+                        data-aos-delay={index * 150}>
                         <div className="card-content">
                             <span className="range">{item.range}</span>
                             <h3>{item.title}</h3>
