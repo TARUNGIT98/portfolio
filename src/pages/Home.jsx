@@ -1,11 +1,11 @@
 import "../styles/home.css";
-import { FaGithub ,FaLinkedin, FaFileAlt  } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 import tarunImage from "../assets/TarunHeadshot.jpg";
 
 function Home() {
   return (
     <div className="home-container">
-      <div className ="home-content">
+      <div className="home-content">
         <div className="home-text">
           <p className="intro-text">Welcome to my portfolio</p>
           <h1>
@@ -24,13 +24,13 @@ function Home() {
             <a href="https://github.com/TARUNGIT98" target="_blank" rel="noopener noreferrer" className="btn">
               <FaGithub className="icon" /> GitHub
             </a>
-            <a href="/resume.pdf" download className="btn">
+            <a href="/SaiTarunSirapurapu_Resume'.pdf" download className="btn">
               <FaFileAlt className="icon" /> Resume
             </a>
           </div>
         </div>
         <div className="home-image">
-            <img src={tarunImage} alt="Tarun Sirapurapu" />
+          <img src={tarunImage} alt="Tarun Sirapurapu" />
         </div>
       </div>
     </div>

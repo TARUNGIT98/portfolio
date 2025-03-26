@@ -32,7 +32,7 @@ function Contact() {
       <div className="w-full max-w-[1440px] mx-auto px-4 md:px-8" data-aos="fade-up">
         <h1 className="text-4xl font-bold text-gray-800 text-center mb-4">Contact Me</h1>
         <p className="text-gray-600 text-center mb-10 max-w-2xl mx-auto">
-          Got an exciting idea or opportunity? Let’s build something awesome together.
+          Got an exciting idea or opportunity? Feel free to drop me a message.
         </p>
 
         <form
