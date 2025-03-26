@@ -1,6 +1,7 @@
 import "../styles/home.css";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 import tarunImage from "../assets/TarunHeadshot.jpg";
+import resume from "public/SaiTarunSirapurapu_Resume'.pdf";
 
 function Home() {
   return (
@@ -18,13 +19,13 @@ function Home() {
             Passionate about problem-solving and AI-driven innovations.
           </p>
           <div className="buttons">
-            <a href="https://linkedin.com/saitarunisrapurapu" target="_blank" rel="noopener noreferrer" className="btn">
+            <a href="https://linkedin.com/saitarunisrapurapu/" target="_blank" rel="noopener noreferrer" className="btn">
               <FaLinkedin className="icon" /> LinkedIn
             </a>
             <a href="https://github.com/TARUNGIT98" target="_blank" rel="noopener noreferrer" className="btn">
               <FaGithub className="icon" /> GitHub
             </a>
-            <a href="/SaiTarunSirapurapu_Resume'.pdf" download className="btn">
+            <a href={resume} download className="btn">
               <FaFileAlt className="icon" /> Resume
             </a>
           </div>
