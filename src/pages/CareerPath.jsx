@@ -16,13 +16,13 @@ function CareerPath() {
             location: "Dayton, OH, USA",
         },
         {
-            range: "2020 – 2022",
+            range: "Oct 2020 – Dec 2022",
             title: "Software Engineer",
             place: "CGI Inc.",
             location: "India",
         },
         {
-            range: "2016 – 2020",
+            range: "Aug 2016 – Sep 2020",
             title: "Bachelors in Electronics and Communication",
             place: "KMIT",
             location: "Hyderabad, India",
