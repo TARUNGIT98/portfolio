@@ -19,7 +19,7 @@ function Home() {
             Passionate about problem-solving and AI-driven innovations.
           </p>
           <div className="buttons">
-            <a href="https://linkedin.com/saitarunisrapurapu/" target="_blank" rel="noopener noreferrer" className="btn">
+            <a href="https://linkedin.com/saitarunsirapurapu/" target="_blank" rel="noopener noreferrer" className="btn">
               <FaLinkedin className="icon" /> LinkedIn
             </a>
             <a href="https://github.com/TARUNGIT98" target="_blank" rel="noopener noreferrer" className="btn">
