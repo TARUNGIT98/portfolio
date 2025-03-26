@@ -38,18 +38,19 @@
 }
 
 h1 {
-  font-size: 38px; /* Slightly smaller */
+  font-size: 24px; /* Slightly smaller */
   font-weight: bold;
   color: #111827;
   margin: 10px 0;
 }
 
 h1 .highlight {
+  font-size: 36px; 
   color: #1E3A8A; /* Blue Highlight */
 }
 
 h2 {
-  font-size: 24px;
+  font-size: 36px;
   font-weight: bold;
   color: #111827;
   margin-bottom: 10px;

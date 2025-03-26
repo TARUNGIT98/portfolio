@@ -40,9 +40,9 @@ function App() {
       </div>
       <div className="content">
         <section id="home"><Home /></section>
-        <section id="skills"><Skills /></section>
         <section id="careerpath"><CareerPath /></section>
         <section id="projects"><Projects /></section>
+        <section id="skills"><Skills /></section>
         <section id="contact"><Contact /></section>
       </div>
       <Footer />

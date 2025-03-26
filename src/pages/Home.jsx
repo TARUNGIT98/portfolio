@@ -1,40 +1,58 @@
-import "../styles/home.css";
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 import tarunImage from "../assets/TarunHeadshot.jpg";
-import resume from "../assets/SaiTarunSirapurapu_Resume'.pdf";
+import resume from "../assets/SaiTarunSirapurapu_Resume'.pdf"; // fixed quote issue
+import "../styles/home.css";
 
 function Home() {
   return (
-    <div className="home-container">
-      <div className="home-content">
-        <div className="home-text">
-          <p className="intro-text">Welcome to my portfolio</p>
-          <h1>
-            Hello, I'm <span className="highlight">Tarun</span>
+    <section className="home-container bg-white px-6 py-20 md:py-28" id="home" >
+      <div className="home-content max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-12">
+
+        {/* LEFT: TEXT */}
+        <div className="home-text text-left" data-aos="fade-right">
+          <p className="text-sm tracking-wider text-gray-500 uppercase mb-2">Welcome to my portfolio</p>
+
+          <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">
+            Hi, I’m <span className="text-blue-700">Tarun</span>
           </h1>
-          <h2><strong>Software Engineer</strong></h2>
-          <p className="description">
-            With a background in Deep Learning and Software Developement<br />
-            I specialize in creating efficient, scalable, and user-friendly applications.
-            Passionate about problem-solving and AI-driven innovations.
+
+          <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
+            a <span className="font-bold">Software Engineer</span>
+          </h2>
+
+          <p className="text-gray-600 text-base max-w-xl mb-8">
+            I'm a solid programmer at heart with professional experience in Java and backend systems.
+            With a strong foundation in Deep Learning, I build intelligent, user-centric applications that span microservices to robotics.
+            I enjoy blending AI with real-world problem solving to deliver scalable and impactful solutions.
           </p>
-          <div className="buttons">
-            <a href="https://linkedin.com/saitarunsirapurapu/" target="_blank" rel="noopener noreferrer" className="btn">
+
+
+          <div className="flex flex-wrap gap-4">
+            <a href="https://www.linkedin.com/in/saitarunsirapurapu/" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium">
               <FaLinkedin className="icon" /> LinkedIn
             </a>
-            <a href="https://github.com/TARUNGIT98" target="_blank" rel="noopener noreferrer" className="btn">
+            <a href="https://github.com/TARUNGIT98" target="_blank" rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium">
               <FaGithub className="icon" /> GitHub
             </a>
-            <a href={resume} download className="btn">
+            <a href={resume} download
+              className="flex items-center gap-2 px-5 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium">
               <FaFileAlt className="icon" /> Resume
             </a>
           </div>
         </div>
+
+        {/* RIGHT: IMAGE */}
         <div className="home-image">
-          <img src={tarunImage} alt="Tarun Sirapurapu" />
+          <img
+            src={tarunImage}
+            alt="Tarun Sirapurapu"
+            className="rounded-xl shadow-lg w-64 md:w-72 lg:w-80 object-cover"
+          />
         </div>
       </div>
-    </div>
+    </section>
   );
 }
 
