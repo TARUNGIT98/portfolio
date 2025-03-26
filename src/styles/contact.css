@@ -1,93 +1,96 @@
-.contact-container 
-{
+.contact-container {
   width: 100%;
-  max-width: 1000px; /* Adjust width to fit design */
-  margin: 50px auto;
-  padding: 30px;
-  background: #114ea2; /* Dark background */
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 900px;
+  margin: 80px auto;
+  padding: 40px 30px;
+  background: white;
+  border-radius: 16px;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.08);
   text-align: center;
-  transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Hover effect */
 .contact-container:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
 }
 
-/* Style for heading */
 .contact-container h1 {
-  color: white;
-  font-size: 28px;
+  font-size: 2rem;
   margin-bottom: 10px;
+  color: #1f2937;
 }
 
-/* Subtitle */
 .contact-container p {
-  color: #ffffff;
-  font-size: 16px;
-  margin-bottom: 20px;
+  color: #475569;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* Form Layout */
 form {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 15px;
+  gap: 18px;
 }
 
-/* Input Row: Name and Email */
-.input-row 
-{
-  align-items: first baseline;
+.input-row {
   display: flex;
-  gap: 10px;
-  width: 90%; /* Aligns with textarea */
+  gap: 16px;
+  width: 90%;
+  flex-wrap: wrap;
 }
 
-/* Ensure both fields together match message box width */
 .input-row input {
-  flex: 1; /* Make both fields take equal space */
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background: white;
-  color: #333;
-  font-size: 14px;
+  flex: 1;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 0.95rem;
   outline: none;
+  transition: border-color 0.2s;
 }
 
-/* Align Message box with inputs */
+.input-row input:focus {
+  border-color: #3b82f6;
+}
+
 textarea {
   width: 90%;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  background: white;
-  color: #333;
-  font-size: 14px;
+  padding: 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f9fafb;
+  font-size: 0.95rem;
   outline: none;
-  height: 120px;
   resize: none;
+  height: 130px;
+  transition: border-color 0.2s;
 }
 
-/* Center the button */
+textarea:focus {
+  border-color: #3b82f6;
+}
+
 button {
+  margin-top: 10px;
   width: 200px;
-  padding: 12px 18px;
-  background: #4a90e2;
+  padding: 12px 20px;
+  background: #2563eb;
   border: none;
   border-radius: 8px;
   color: white;
-  font-size: 16px;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
   transition: background 0.3s ease;
 }
 
 button:hover {
-  background: #1f6feb;
+  background: #1d4ed8;
 }

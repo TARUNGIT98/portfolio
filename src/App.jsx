@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import "./styles/global.css"; // idhi em chestundhi ante, app.css file ni import chesthundhi
 import AOS from "aos";
 import "aos/dist/aos.css";
-
+// import './index.css';
 
 
 
