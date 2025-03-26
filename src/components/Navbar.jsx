@@ -22,6 +22,7 @@ function Navbar() {
       <h1 className="logo">Tarun Sirapurapu</h1>
       <div className="nav-links">
         <a href="#home">Home</a>
+        <a href="#careerpath">Career</a>
         <a href="#projects">Projects</a>
         <a href="#skills">Skills</a>
         <a href="#contact">Contact</a>
