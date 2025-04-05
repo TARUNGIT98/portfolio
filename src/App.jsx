@@ -9,6 +9,9 @@ import Footer from "./components/Footer";
 import "./styles/global.css"; // idhi em chestundhi ante, app.css file ni import chesthundhi
 import AOS from "aos";
 import "aos/dist/aos.css";
+import HackerRankSection from './components/HackerRankSection';
+
+
 // import './index.css';
 
 
@@ -40,6 +43,7 @@ function App() {
       </div>
       <div className="content">
         <section id="home"><Home /></section>
+        <section id="HackerRankSection"><HackerRankSection /></section>
         <section id="careerpath"><CareerPath /></section>
         <section id="projects"><Projects /></section>
         <section id="skills"><Skills /></section>
