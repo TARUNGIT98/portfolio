@@ -9,7 +9,7 @@ import Footer from "./components/Footer";
 import "./styles/global.css"; // idhi em chestundhi ante, app.css file ni import chesthundhi
 import AOS from "aos";
 import "aos/dist/aos.css";
-import Code from './components/Coding';
+import CodingPage from './pages/CodingPage';
 
 
 // import './index.css';
@@ -44,7 +44,7 @@ function App() {
       <div className="content">
         <section id="home"><Home /></section>
         <section id="careerpath"><CareerPath /></section>
-        <section id="HackerRankSection"><Code /></section>
+        <section id="codingpage"><CodingPage /></section>
         <section id="projects"><Projects /></section>
         <section id="skills"><Skills /></section>
         <section id="contact"><Contact /></section>
