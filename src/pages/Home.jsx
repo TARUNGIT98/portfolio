@@ -1,6 +1,6 @@
 import { FaGithub, FaLinkedin, FaFileAlt } from "react-icons/fa";
 import tarunImage from "../assets/TarunHeadshot.jpg";
-import resume from "../assets/SaiTarunSirapurapu_Resume'.pdf"; // fixed quote issue
+import resume from "../assets/TarunSirapurapuResume.pdf"; // fixed quote issue
 import "../styles/home.css";
 
 function Home() {
