@@ -1,63 +1,58 @@
+/* navbar.css */
+
+/* navbar.css */
 .navbar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 9%;
   display: flex;
-  justify-content: space-between; /* Ensures proper spacing */
+  justify-content: space-between;
   align-items: center;
-  padding: 15px 30px;
-  background: #ffffff; /* Solid initially */
-  transition: background 0.3s ease-in-out, padding 0.3s ease-in-out;
+  padding: 1rem 2rem;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  background-color: transparent;
   z-index: 1000;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* Transparent effect when scrolling */
 .navbar.scrolled {
-  background: rgba(166, 169, 174, 0.7);
-  backdrop-filter: blur(10px);
-  padding: 10px 30px;
+  background-color: rgba(255, 255, 255, 0.95); /* light background */
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);    /* soft shadow */
 }
 
-.navbar h1 {
-  font-size: 24px;
-  color: black;
-}
+/* Keep rest of your styles unchanged */
 
-/* Ensure the logo stays on the left */
 .logo {
-  font-size: 24px;
+  font-size: 1.6rem;
   font-weight: bold;
-  color: white;
+  transition: transform 0.3s ease;
 }
 
-/* Fix Navbar Links Container */
+.logo:hover {
+  transform: scale(1.05);
+}
+
 .nav-links {
   display: flex;
-  gap: 20px;
-  align-items: center;
-  margin-left: auto; /* Pushes links to the right */
-  padding-right: 50px; /* Ensures right alignment */
+  gap: 1.5rem;
 }
 
-/* Navbar links */
 .nav-links a {
-  color: rgb(0, 0, 0);
+  color: #333;
   text-decoration: none;
-  font-size: 16px;
-  transition: color 0.3s ease;
-  white-space: nowrap; /* Prevents links from wrapping */
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Ensure links remain visible */
 .nav-links a:hover {
-  color: #58a6ff;
+  transform: translateY(-3px) scale(1.1);
+  color: #0077b5; /* LinkedIn blue as hover example */
 }
 
-/* Fix Navbar on Small Screens */
-@media (max-width: 768px) {
-  .nav-links {
-    display: none;
-  }
+/* Icons */
+.nav-links a svg {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover svg {
+  transform: scale(1.2);
 }

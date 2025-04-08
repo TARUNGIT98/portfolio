@@ -28,17 +28,24 @@ function Home() {
 
 
           <div className="flex flex-wrap gap-4">
-            <a href="https://www.linkedin.com/in/saitarunsirapurapu/" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium">
-              <FaLinkedin className="icon" /> LinkedIn
+            {/* LinkedIn - blue */}
+            <a
+              href="https://www.linkedin.com/in/saitarunsirapurapu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-10 h-10 text-blue-600 hover:scale-110 transition-transform duration-300"
+            >
+              <FaLinkedin className="text-2xl" />
             </a>
-            <a href="https://github.com/TARUNGIT98" target="_blank" rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium">
-              <FaGithub className="icon" /> GitHub
-            </a>
-            <a href={resume} download
-              className="flex items-center gap-2 px-5 py-2 bg-blue-700 text-white rounded-md hover:bg-blue-800 transition font-medium">
-              <FaFileAlt className="icon" /> Resume
+
+            {/* GitHub - black */}
+            <a
+              href="https://github.com/TARUNGIT98"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center justify-center w-10 h-10 text-black hover:scale-110 transition-transform duration-300"
+            >
+              <FaGithub className="text-2xl" />
             </a>
           </div>
         </div>
