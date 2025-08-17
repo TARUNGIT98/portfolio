@@ -1,130 +1,181 @@
+/* --- Theme tokens (edit these first) --- */
+:root {
+  --bg: #FAF6EF;              /* eggshell */
+  --text: #0f172a;            /* near-black slate for better readability */
+  --muted: #475569;           /* secondary text */
+  --accent: #1D503A;          /* dark emerald */
+  --card-bg: #ffffff;
+  --card-border: rgba(2, 6, 23, 0.08);
+  --shadow: 0 4px 16px rgba(2, 6, 23, 0.06);
+}
+
+/* Optional: dark mode support via prefers-color-scheme */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0b1220;
+    --text: #e5e7eb;
+    --muted: #94a3b8;
+    --card-bg: #0f172a;
+    --card-border: rgba(148, 163, 184, 0.15);
+    --shadow: 0 6px 18px rgba(0,0,0,0.35);
+  }
+}
+
+/* --- Recommended fonts (swap to your ideas) ---
+   Headings: 'Playfair Display' or 'Cormorant Garamond'
+   Body: 'Inter', 'Work Sans', or 'Poppins'
+
+   Include one <link> in index.html, e.g.:
+   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+*/
+
 .career-container {
-    max-width: 1300px;
-    margin: 80px auto;
-    padding: 60px 20px;
-    text-align: center;
-    background: linear-gradient(to right, #f9fafb, #f3f4f6);
-    border-radius: 20px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
+  background: var(--bg);
+  color: var(--text);
+  padding: clamp(1.5rem, 3vw, 2.5rem) clamp(1rem, 3vw, 2rem);
+  border-radius: 1.25rem;
+  box-shadow: var(--shadow);
+}
+
+.career-heading {
+  font-family: "Playfair Display", ui-serif, Georgia, serif;
+  font-size: clamp(1.4rem, 3.2vw, 2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  display: inline-flex;
+  align-items: center;
+  gap: .75rem;
+  position: relative;
+  margin: 0 0 1.25rem 0;
+  letter-spacing: 0.2px;
+}
+
+.underline-bar {
+  display: inline-block;
+  height: 6px;
+  width: 54px;
+  background: var(--accent);
+  border-radius: 999px;
+  translate: 0 4px;
+}
+
+/* Scroll container */
+.career-scroll {
+  position: relative;
+  overflow: hidden; /* keeps the line tidy */
+  padding-left: clamp(1.25rem, 3vw, 1.75rem);
+}
+
+/* Subtle vertical line */
+.career-line {
+  position: absolute;
+  left: 10px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    color-mix(in srgb, var(--accent) 45%, transparent),
+    transparent 70%
+  );
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* List semantics */
+.career-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Card */
+.career-card {
+  position: relative;
+  padding-left: clamp(0.75rem, 2vw, 1rem);
+  margin: 0 0 clamp(0.9rem, 2.2vw, 1.15rem) 0;
+}
+
+.career-card::before {
+  content: "";
+  position: absolute;
+  left: -2px;
+  top: 0.8rem;                 /* aligns dot to time text */
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  border-radius: 999px;
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+/* Card content block */
+.card-content {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 14px;
+  padding: clamp(0.85rem, 2.2vw, 1.1rem) clamp(0.95rem, 2.4vw, 1.25rem);
+  box-shadow: var(--shadow);
+  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  will-change: transform;
+}
+
+.career-card:hover .card-content {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--accent) 30%, var(--card-border));
+  box-shadow: 0 10px 24px rgba(2,6,23,0.10);
+}
+
+/* Typography */
+.range {
+  display: inline-block;
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 600;
+  font-size: 0.92rem;
+  color: var(--accent);
+  letter-spacing: .2px;
+  margin-bottom: .25rem;
+}
+
+.role {
+  font-family: "Inter", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial;
+  font-weight: 600;
+  font-size: clamp(1rem, 2.6vw, 1.125rem);
+  margin: 0.1rem 0 0.15rem 0;
+  line-height: 1.35;
+}
+
+.place {
+  margin: 0.15rem 0 0.1rem 0;
+  color: var(--text);
+  opacity: 0.92;
+}
+
+.location {
+  margin: 0.05rem 0 0 0;
+  color: var(--muted);
+  font-size: 0.95rem;
+}
+
+/* Motion preferences—keep it subtle if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .career-card:hover .card-content {
+    transform: none;
   }
-  
-  .career-heading {
-    font-size: 2.4rem;
-    font-weight: 700;
-    color: #1f2937;
-    position: relative;
-    display: inline-block;
-    margin-bottom: 60px;
-  }
-  
-  .underline-bar {
-    display: block;
-    height: 4px;
-    width: 60px;
-    background: #6366f1;
-    margin: 8px auto 0;
-    border-radius: 2px;
-    box-shadow: 0 0 8px #6366f1aa;
-  }
-  
-  .career-scroll {
-    display: flex;
-    position: relative;
-    overflow-x: auto;
-    gap: 80px;
-    padding: 40px 20px;
-    scroll-snap-type: x mandatory;
-  }
-  
-  .career-line {
-    position: absolute;
-    top: 100px;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(to right, #6366f1, #3b82f6);
-    z-index: 0;
-    margin: 0 20px;
-  }
-  
-  .career-card {
-    position: relative;
-    background: white;
-    padding: 24px 28px;
-    border-radius: 16px;
-    box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
-    scroll-snap-align: center;
-    min-width: 240px;
-    max-width: 260px;
-    z-index: 2;
-    text-align: left;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .career-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.25);
-  }
-  
-  .card-dot {
-    width: 18px;
-    height: 18px;
-    background: #1f2937;
-    border: 4px solid white;
-    border-radius: 50%;
-    position: absolute;
-    top: 90px;
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 3;
-  }
-  
   .card-content {
-    margin-top: 40px;
+    transition: border-color .25s ease, box-shadow .25s ease;
   }
-  
-  .range {
-    font-weight: bold;
-    font-size: 1.1rem;
-    color: #111827;
+}
+
+/* Small screens: remove left rail space so cards are centered */
+@media (max-width: 520px) {
+  .career-scroll {
+    padding-left: 0.5rem;
   }
-  
-  .career-card h3 {
-    font-size: 1rem;
-    margin: 8px 0 4px;
-    color: #374151;
-    font-weight: 600;
+  .career-line {
+    left: 2px;
   }
-  
-  .career-card p {
-    font-size: 0.9rem;
-    color: #6b7280;
-    margin: 2px 0;
+  .career-card {
+    padding-left: 0.75rem;
   }
-  
-  .location {
-    font-style: italic;
-  }
-  
-  /* Mobile View */
-  @media (max-width: 768px) {
-    .career-scroll {
-      flex-direction: column;
-      align-items: center;
-      gap: 60px;
-      padding: 0;
-    }
-  
-    .career-line {
-      display: none;
-    }
-  
-    .career-card {
-      max-width: 90%;
-    }
-  
-    .card-dot {
-      top: -10px;
-    }
-  }
-  
+}

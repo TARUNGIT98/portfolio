@@ -1,6 +1,5 @@
 import "../styles/careerpath.css";
 
-
 function CareerPath() {
     const timeline = [
         {
@@ -30,28 +29,35 @@ function CareerPath() {
     ];
 
     return (
-        <div className="career-container">
-            <h2 className="career-heading">
+        <section className="career-container" aria-labelledby="career-heading">
+            <h2 id="career-heading" className="career-heading">
                 Career Path
-                <span className="underline-bar" />
+                <span aria-hidden="true" className="underline-bar" />
             </h2>
+
             <div className="career-scroll">
-                <div className="career-line" />
-                {timeline.map((item, index) => (
-                    <div className="career-card"
-                        key={index}
-                        data-aos="fade-up"
-                        data-aos-delay={index * 150}>
-                        <div className="card-content">
-                            <span className="range">{item.range}</span>
-                            <h3>{item.title}</h3>
-                            <p>{item.place}</p>
-                            <p className="location">{item.location}</p>
-                        </div>
-                    </div>
-                ))}
+                <span aria-hidden="true" className="career-line" />
+                <ol className="career-list">
+                    {timeline.map((item, index) => (
+                        <li
+                            className="career-card"
+                            key={item.title + index}
+                            data-aos="fade-up"
+                            data-aos-delay={index * 120}
+                        >
+                            <article className="card-content">
+                                <time className="range" dateTime={item.range}>
+                                    {item.range}
+                                </time>
+                                <h3 className="role">{item.title}</h3>
+                                <p className="place">{item.place}</p>
+                                <p className="location">{item.location}</p>
+                            </article>
+                        </li>
+                    ))}
+                </ol>
             </div>
-        </div>
+        </section>
     );
 }
 
