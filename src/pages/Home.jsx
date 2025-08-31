@@ -17,7 +17,7 @@ function Home() {
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-800 mb-4">
-            a <span className="font-bold">Software Engineer</span>
+            a <span className="font-bold">Software Developer</span>
           </h2>
 
           <p className="text-gray-600 text-base max-w-xl mb-8">

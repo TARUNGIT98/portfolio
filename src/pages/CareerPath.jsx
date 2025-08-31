@@ -3,25 +3,37 @@ import "../styles/careerpath.css";
 function CareerPath() {
     const timeline = [
         {
-            range: "Jan 2023 – Dec 2024",
+            range: "Aug 2024 to Present",
+            title: "Full Stack Web Developer",
+            place: "Reynolds and Reynolds",
+            location: "Dayton, OH, USA",
+        },
+        {
+            range: "Feb 2024 to Aug 2024",
+            title: "Data Scientist",
+            place: "Dream Studio LLC",
+            location: "Remote,USA",
+        },
+        {
+            range: "Jan 2023 to Dec 2024",
             title: "Masters in Computer Science",
             place: "University of Dayton",
             location: "Dayton, OH, USA",
         },
         {
-            range: "May 2023 – Dec 2024",
+            range: "May 2023 to Dec 2024",
             title: "Graduate Assistant",
             place: "University of Dayton",
             location: "Dayton, OH, USA",
         },
         {
-            range: "Oct 2020 – Dec 2022",
+            range: "Oct 2020 to Dec 2022",
             title: "Software Engineer",
             place: "CGI Inc.",
             location: "India",
         },
         {
-            range: "Aug 2016 – Sep 2020",
+            range: "Aug 2016 to Sep 2020",
             title: "Bachelors in Electronics and Communication",
             place: "KMIT",
             location: "Hyderabad, India",
@@ -29,7 +41,7 @@ function CareerPath() {
     ];
 
     return (
-        <section className="career-container" aria-labelledby="career-heading">
+        <section className="career-container career-variant--light" aria-labelledby="career-heading">
             <h2 id="career-heading" className="career-heading">
                 Career Path
                 <span aria-hidden="true" className="underline-bar" />
