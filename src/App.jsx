@@ -39,7 +39,7 @@ function App() {
     <div>
       <Navbar />
       <div className="quote-banner">
-        <p>“This portfolio is my way of liberating myself from doubt and growing into an engineer I aspire to be. It stands as a quiet testament to my curiosity, my love for building, and my ongoing journey of learning.”</p>
+        <p>“This portfolio is a  way of liberating myself from doubt and growing into an engineer I aspire to be. It stands as a quiet testament to my curiosity, my love for building, and my ongoing journey of learning.”</p>
       </div>
       <div className="content">
         <section id="home"><Home /></section>
