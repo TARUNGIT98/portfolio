@@ -1,4 +1,3 @@
-import "../styles/skills.css";
 import { FaReact, FaPython, FaAws, FaDocker } from "react-icons/fa";
 import {
   SiTensorflow,
@@ -24,17 +23,24 @@ const skillsData = [
 
 function Skills() {
   return (
-    <div className="skills-container">
-      <h2 className="skills-heading">Technologies Most Used</h2>
-      <div className="skills-scroll">
-        {skillsData.map((skill, index) => (
-          <div key={index} className="skill-card">
-            {skill.icon}
-            <p>{skill.name}</p>
-          </div>
-        ))}
+    <section className="bg-white min-h-screen flex items-center justify-center py-20">
+      <div className="container-card w-full">
+        <h2 className="section-heading">Technologies Most Used</h2>
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          {skillsData.map((skill, index) => (
+            <div
+              key={skill.name}
+              className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 card-hover text-center"
+              data-aos="fade-up"
+              data-aos-delay={index * 80}
+            >
+              {skill.icon}
+              <p>{skill.name}</p>
+            </div>
+          ))}
+        </div>
       </div>
-    </div>
+    </section>
   );
 }
 
