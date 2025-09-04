@@ -99,6 +99,12 @@
   margin-bottom: var(--space-xl);
   text-align: center;
   position: relative;
+  transition: color 0.3s ease;
+  cursor: default;
+}
+
+.section-heading:hover {
+  color: var(--color-primary);
 }
 
 .section-heading::after {
