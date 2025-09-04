@@ -54,7 +54,7 @@ function Home() {
             <img
               src={tarunImage}
               alt="Tarun Sirapurapu"
-              className="w-80 h-80 lg:w-96 lg:h-96 object-cover rounded-2xl shadow-2xl"
+              className="w-80 lg:w-96 object-cover rounded-2xl shadow-2xl"
             />
           </div>
         </div>

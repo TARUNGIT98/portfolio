@@ -1,4 +1,3 @@
-// src/pages/CodingPage.jsx
 import React, { useState } from 'react';
 import Tabs from '../components/Tabs';
 import LeetCodeCard from '../components/LeetCodeCard';
@@ -9,24 +8,17 @@ const CodingPage = () => {
     const [activeTab, setActiveTab] = useState('leetcode');
 
     return (
-        <section className="home-container bg-white px-6 py-20 md:py-28" id="coding">
-            <div className="home-content max-w-6xl mx-auto flex flex-col gap-16" data-aos="fade-right">
+        <section className="bg-white min-h-screen flex items-center justify-center py-20" id="coding">
+            <div className="container-card w-full">
+                <h2 className="section-heading">My Coding Progress</h2>
 
-                {/* Heading Section */}
-                <div className="text-left">
-
-                    <h1 className="text-4xl md:text-5xl font-bold text-gray-900 leading-tight mb-2">
-                        My <span className="text-blue-700">Coding Progress</span>
-                    </h1>
-
-                    <p className="text-gray-600 text-base max-w-xl mb-8">
-                        This section reflects my journey across LeetCode, NeetCode, and HackerRank.
-                        Real-time stats, charts, and challenges I've tackled along the way — all in one interactive dashboard.
-                    </p>
-                </div>
+                <p className="text-gray-600 text-center text-lg mb-12 max-w-3xl mx-auto" data-aos="fade-up">
+                    This section reflects my journey across LeetCode, NeetCode, and HackerRank.
+                    Real-time stats, charts, and challenges I've tackled along the way.
+                </p>
 
                 {/* Tabs Section */}
-                <div className="w-full" data-aos="fade-up" data-aos-delay="200">
+                <div className="w-full mb-8" data-aos="fade-up" data-aos-delay="200">
                     <Tabs
                         active={activeTab}
                         setActive={setActiveTab}
