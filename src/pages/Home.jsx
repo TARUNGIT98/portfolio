@@ -3,7 +3,7 @@ import tarunImage from "../assets/TarunHeadshot.jpg";
 
 function Home() {
   return (
-    <section className="bg-gray-50 min-h-screen flex items-center justify-center py-20" id="home">
+    <section className="bg-secondary min-h-screen flex items-center justify-center py-20" id="home">
       <div className="container-card w-full">
         <div className="flex flex-col lg:flex-row items-center gap-12">
 
@@ -18,7 +18,7 @@ function Home() {
             </h1>
 
             <h2 className="text-2xl lg:text-3xl font-semibold text-gray-700 mb-6">
-              a <span className="font-bold text-gray-900">Software Developer</span>
+              a <span className="font-bold text-primary">Software Developer</span>
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-2xl">

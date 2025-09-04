@@ -45,7 +45,7 @@
   --radius-xl: 1.25rem;
 }
 
-/* Dark mode support */
+/* Dark mode support via media query (fallback) */
 @media (prefers-color-scheme: dark) {
   :root {
     --bg-primary: #0b1220;
@@ -58,6 +58,19 @@
     --shadow-sm: 0 6px 18px rgba(0,0,0,0.35);
     --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
   }
+}
+
+/* Dark mode support via class (overrides media query) */
+.dark {
+  --bg-primary: #0b1220;
+  --bg-secondary: #0f172a;
+  --bg-card: #1e293b;
+  --text-primary: #e5e7eb;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --border-light: rgba(148, 163, 184, 0.15);
+  --shadow-sm: 0 6px 18px rgba(0,0,0,0.35);
+  --shadow-md: 0 8px 24px rgba(0,0,0,0.4);
 }
 
 /* Base Styles */
@@ -81,7 +94,21 @@
   position: relative;
 }
 
-/* Utility Classes */
+/* Utility Classes for Theme Support */
+.bg-primary { background-color: var(--bg-primary); }
+.bg-secondary { background-color: var(--bg-secondary); }
+.bg-card { background-color: var(--bg-card); }
+
+.text-primary { color: var(--text-primary); }
+.text-secondary { color: var(--text-secondary); }
+.text-muted { color: var(--text-muted); }
+
+.border-theme { border-color: var(--border-light); }
+.shadow-theme-sm { box-shadow: var(--shadow-sm); }
+.shadow-theme-md { box-shadow: var(--shadow-md); }
+.shadow-theme-hover { box-shadow: var(--shadow-hover); }
+
+/* Component Utility Classes */
 .container-card {
   background: var(--bg-card);
   border-radius: var(--radius-xl);
@@ -104,7 +131,7 @@
 }
 
 .section-heading:hover {
-  color: var(--color-accent);
+  color: var(--color-primary);
 }
 
 .section-heading::after {
@@ -126,9 +153,73 @@
   box-shadow: var(--shadow-hover);
 }
 
+/* Button Utilities */
+.btn-primary {
+  background-color: var(--color-primary);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover);
+}
+
+.btn-outline {
+  border: 2px solid var(--border-light);
+  color: var(--text-primary);
+  background: transparent;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-outline:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Input Utilities */
+.input-theme {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-primary);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  transition: all 0.3s ease;
+}
+
+.input-theme:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(0, 68, 255, 0.1);
+}
+
+.input-theme::placeholder {
+  color: var(--text-muted);
+}
+
 /* Motion preferences */
 @media (prefers-reduced-motion: reduce) {
   .card-hover:hover {
     transform: none;
+  }
+  
+  .btn-primary:hover,
+  .section-heading {
+    transform: none;
+  }
+  
+  * {
+    transition-duration: 0.01ms !important;
   }
 }
