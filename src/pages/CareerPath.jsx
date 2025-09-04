@@ -1,4 +1,4 @@
-import "../styles/careerpath.css";
+// import "../styles/careerpath.css";
 
 function CareerPath() {
     const timeline = [
