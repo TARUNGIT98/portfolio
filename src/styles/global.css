@@ -104,7 +104,7 @@
 }
 
 .section-heading:hover {
-  color: var(--color-primary);
+  color: var(--color-secondary);
 }
 
 .section-heading::after {
