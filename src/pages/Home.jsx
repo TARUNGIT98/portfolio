@@ -22,7 +22,7 @@ function Home() {
             </h2>
 
             <p className="text-gray-600 text-lg leading-relaxed mb-8 max-w-2xl">
-              I'm a solid programmer at heart with professional experience in Java and backend systems.
+              I'm a programmer at heart with professional experience in Java and backend systems.
               With a strong foundation in Deep Learning, I build intelligent, user-centric applications that span microservices to robotics.
               I enjoy blending AI with real-world problem solving to deliver scalable and impactful solutions.
             </p>
