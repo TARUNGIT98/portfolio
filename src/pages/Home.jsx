@@ -29,7 +29,7 @@ const TypewriterText = ({ text, speed = 100 }) => {
 
 function Home() {
 
-  // Hook #1
+  // Hook #1 to represent that I wear mutiple hats JACK of all TRADES , Master of One.
   const hats = ['Web Developer', 'Backend Developer', 'Data Scientist']
   const [currentHat, setCurrentHat] = useState(0);
 
@@ -47,15 +47,15 @@ function Home() {
 
           {/* Left: Text Content */}
           <div className="flex-1 text-center lg:text-left" data-aos="fade-right">
-            <p className="text-sm text-muted uppercase tracking-wider mb-4 animate-fade-in">
+            <p className="text-sm text-muted uppercase tracking-wider mb-4 animate-fade-in-up">
               <TypewriterText text="Welcome to my portfolio" speed={80} />
             </p>
 
-            <h1 className="text-5xl lg:text-6xl font-bold text-primary mb-4 animate-slide-up">
+            <h1 className="text-5xl lg:text-6xl font-bold text-primary mb-4 animate-fade-in-up animate-delay-300">
               Hi, I'm <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">Tarun</span>
             </h1>
 
-            <h2 className="text-2xl lg:text-3xl font-semibold text-secondary mb-6">
+            <h2 className="text-2xl lg:text-3xl font-semibold text-secondary mb-6 animate-fade-in-up animate-delay-600">
               a <span className="font-bold text-gray-800 transition-all duration-500">
                 {hats[currentHat]}
               </span>
@@ -98,6 +98,39 @@ function Home() {
           </div>
         </div>
       </div>
+      <style>{`
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      
+      @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+      }
+      
+      .animate-fade-in-up {
+        animation: fadeInUp 0.8s ease-out forwards;
+      }
+      
+      .animate-fade-in {
+        animation: fadeIn 0.8s ease-out forwards;
+      }
+      
+      .animate-delay-300 {
+        animation-delay: 0.3s;
+      }
+      
+      .animate-delay-600 {
+        animation-delay: 0.6s;
+      }
+    `}</style>
     </section>
   );
 }
