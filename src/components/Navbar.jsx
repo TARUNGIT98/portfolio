@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { FaDownload, FaSun, FaMoon } from "react-icons/fa";
-import resume from "../assets/TarunSirapurapuResume.pdf";
+import resume from "../assets/TarunSirapurapuResumeOct25.pdf";
 
 function Navbar() {
   const [isDarkMode, setIsDarkMode] = useState(false);
