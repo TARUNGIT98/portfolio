@@ -249,108 +249,108 @@ const SkillCard = ({ skill, index }) => {
       </button >
     </div >
   );
+}
+function Skills() {
+  const [selectedCategory, setSelectedCategory] = useState("all");
 
-  function Skills() {
-    const [selectedCategory, setSelectedCategory] = useState("all");
+  const categories = [
+    { id: "all", name: "All Skills", count: skillsData.length },
+    { id: "languages", name: "Languages", skills: ["Java", "Python", "CSS"] },
+    { id: "ai", name: "AI/ML", skills: ["TensorFlow", "PyTorch"] },
+    {
+      id: "frameworks",
+      name: "Frameworks",
+      skills: ["Spring", "Flask", "React"],
+    },
+    { id: "tools", name: "Tools", skills: ["AWS", "Docker"] },
+  ];
 
-    const categories = [
-      { id: "all", name: "All Skills", count: skillsData.length },
-      { id: "languages", name: "Languages", skills: ["Java", "Python", "CSS"] },
-      { id: "ai", name: "AI/ML", skills: ["TensorFlow", "PyTorch"] },
-      {
-        id: "frameworks",
-        name: "Frameworks",
-        skills: ["Spring", "Flask", "React"],
-      },
-      { id: "tools", name: "Tools", skills: ["AWS", "Docker"] },
-    ];
+  const filteredSkills =
+    selectedCategory === "all"
+      ? skillsData
+      : skillsData.filter((skill) => {
+        const category = categories.find(
+          (cat) => cat.id === selectedCategory
+        );
+        return category?.skills?.includes(skill.name);
+      });
 
-    const filteredSkills =
-      selectedCategory === "all"
-        ? skillsData
-        : skillsData.filter((skill) => {
-          const category = categories.find(
-            (cat) => cat.id === selectedCategory
-          );
-          return category?.skills?.includes(skill.name);
-        });
+  return (
+    <section className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 py-20 relative overflow-hidden">      {/* Background decoration */}
+      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5" />
+      <div className="relative z-10 max-w-7xl mx-auto px-6">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <h2 className="text-5xl font-bold text-primary mb-4">
+            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
+              Technical Expertise
+            </span>
+          </h2>
+          <p className="text-muted text-xl max-w-2xl mx-auto">
+            Interactive skill cards showcasing my technical proficiency. Click
+            any card to explore details and original docs.
+          </p>
+        </div>
 
-    return (
-      <section className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 py-20 relative overflow-hidden">      {/* Background decoration */}
-        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5" />
-        <div className="relative z-10 max-w-7xl mx-auto px-6">
-          {/* Header */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-primary mb-4">
-              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-                Technical Expertise
-              </span>
-            </h2>
-            <p className="text-muted text-xl max-w-2xl mx-auto">
-              Interactive skill cards showcasing my technical proficiency. Click
-              any card to explore details and original docs.
-            </p>
-          </div>
-
-          {/* Category Filter */}
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setSelectedCategory(category.id)}
-                className={`
+        {/* Category Filter */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <button
+              key={category.id}
+              onClick={() => setSelectedCategory(category.id)}
+              className={`
             px-6 py-3 rounded-full font-medium transition-all duration-300
             ${selectedCategory === category.id
-                    ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg scale-105"
-                    : "bg-card border border-theme text-muted hover:border-blue-500/50 hover:text-primary"
-                  }
+                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg scale-105"
+                  : "bg-card border border-theme text-muted hover:border-blue-500/50 hover:text-primary"
+                }
           `}
-              >
-                {category.name}
-                {category.count && (
-                  <span className="ml-2 text-xs opacity-75">
-                    ({category.count})
-                  </span>
-                )}
-              </button>
-            ))}
-          </div>
-
-          {/* Skills Grid */}
-          <div className="grid gap-8" style={{ gridTemplateColumns: 'repeat(3, minmax(385px, 1fr))' }}>          {filteredSkills.map((skill, index) => (
-            <SkillCard key={skill.name} skill={skill} index={index} />
+            >
+              {category.name}
+              {category.count && (
+                <span className="ml-2 text-xs opacity-75">
+                  ({category.count})
+                </span>
+              )}
+            </button>
           ))}
-          </div>
+        </div>
 
-          {/* Stats */}
-          <div className="mt-16 text-center">
-            <div className="inline-flex items-center gap-8 bg-card/80 backdrop-blur-sm border border-theme rounded-2xl px-8 py-4">
-              <div>
-                <div className="text-2xl font-bold text-primary">
-                  {skillsData.length}
-                </div>
-                <div className="text-sm text-muted">Technologies</div>
+        {/* Skills Grid */}
+        <div className="grid gap-8" style={{ gridTemplateColumns: 'repeat(3, minmax(385px, 1fr))' }}>          {filteredSkills.map((skill, index) => (
+          <SkillCard key={skill.name} skill={skill} index={index} />
+        ))}
+        </div>
+
+        {/* Stats */}
+        <div className="mt-16 text-center">
+          <div className="inline-flex items-center gap-8 bg-card/80 backdrop-blur-sm border border-theme rounded-2xl px-8 py-4">
+            <div>
+              <div className="text-2xl font-bold text-primary">
+                {skillsData.length}
               </div>
-              <div className="w-px h-8 bg-theme" />
-              <div>
-                <div className="text-2xl font-bold text-primary">
-                  {Math.round(
-                    skillsData.reduce((acc, skill) => acc + skill.level, 0) /
-                    skillsData.length
-                  )}
-                  %
-                </div>
-                <div className="text-sm text-muted">Avg Proficiency</div>
+              <div className="text-sm text-muted">Technologies</div>
+            </div>
+            <div className="w-px h-8 bg-theme" />
+            <div>
+              <div className="text-2xl font-bold text-primary">
+                {Math.round(
+                  skillsData.reduce((acc, skill) => acc + skill.level, 0) /
+                  skillsData.length
+                )}
+                %
               </div>
-              <div className="w-px h-8 bg-theme" />
-              <div>
-                <div className="text-2xl font-bold text-primary">3+</div>
-                <div className="text-sm text-muted">Years Experience</div>
-              </div>
+              <div className="text-sm text-muted">Avg Proficiency</div>
+            </div>
+            <div className="w-px h-8 bg-theme" />
+            <div>
+              <div className="text-2xl font-bold text-primary">3+</div>
+              <div className="text-sm text-muted">Years Experience</div>
             </div>
           </div>
         </div>
-        <style>{`
+      </div>
+      <style>{`
   .perspective-1000 {
     perspective: 1000px;
   }
@@ -361,8 +361,7 @@ const SkillCard = ({ skill, index }) => {
     transform-style: preserve-3d;
   }
 `}</style>
-      </section>
-    );
-  }
+    </section>
+  );
 }
 export default Skills;
