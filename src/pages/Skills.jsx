@@ -191,157 +191,166 @@ const SkillCard = ({ skill, index }) => {
             Click to flip
           </p>
         </div>
+
         {/* Back of card */}
-        <div className="pointer-events-none">
-          <div className="flex items-center gap-3 mb-4">
-            <span className="text-3xl text-slate-600 dark:text-slate-400">{skill.icon}</span>
-            <h3 className="text-xl font-bold text-slate-900 dark:text-white">{skill.name}</h3>
+        <div
+          className={`absolute inset-0 w-full h-full rounded-xl bg-white/5 dark:bg-white/5 border border-white/20 dark:border-white/10 shadow-2xl shadow-black/5 dark:shadow-black/40 transition-all duration-500 ease-in-out p-6 flex flex-col justify-between ${isFlipped ? 'opacity-100 scale-100' : 'opacity-0 scale-95'
+            }`}
+          style={{
+            transform: isFlipped ? 'rotateY(0deg) scale(1)' : 'rotateY(-12deg) scale(0.95)',
+            opacity: isFlipped ? 1 : 0,
+            pointerEvents: isFlipped ? 'auto' : 'none'
+          }}
+        >
+          {/* Top content section */}
+          <div>
+            <div className="flex items-center gap-3 mb-4">
+              <span className="text-3xl text-slate-600 dark:text-slate-400">{skill.icon}</span>
+              <h3 className="text-xl font-bold text-slate-900 dark:text-white drop-shadow-sm">{skill.name}</h3>
+            </div>
+
+            <div className="mb-6">
+              <p className="text-slate-800 dark:text-white text-sm leading-relaxed">
+                {skill.description}
+              </p>
+            </div>
+
+            <div className="flex items-center justify-between mb-6">
+              <div className="text-center">
+                <div className="text-2xl font-bold text-slate-900 dark:text-white">{skill.experience}</div>
+                <div className="text-xs text-slate-500">Experience</div>
+              </div>
+            </div>
           </div>
 
-          <div className="mb-6">
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-              {skill.description}
+          {/* Bottom buttons section */}
+          <div className="mt-auto">
+
+            <a href={skill.docs}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white text-sm py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-300 mb-3"
+              onClick={(e) => e.stopPropagation()}>
+              <span>View Documentation</span>
+              <ExternalLink className="w-4 h-4" />
+            </a>
+
+            <button
+              className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-sm py-2 px-4 rounded-lg transition-colors duration-300"
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsFlipped(false);
+              }}
+            >
+              ← Back to Skills
+            </button>
+          </div>
+        </div>
+      </button >
+    </div >
+  );
+
+  function Skills() {
+    const [selectedCategory, setSelectedCategory] = useState("all");
+
+    const categories = [
+      { id: "all", name: "All Skills", count: skillsData.length },
+      { id: "languages", name: "Languages", skills: ["Java", "Python", "CSS"] },
+      { id: "ai", name: "AI/ML", skills: ["TensorFlow", "PyTorch"] },
+      {
+        id: "frameworks",
+        name: "Frameworks",
+        skills: ["Spring", "Flask", "React"],
+      },
+      { id: "tools", name: "Tools", skills: ["AWS", "Docker"] },
+    ];
+
+    const filteredSkills =
+      selectedCategory === "all"
+        ? skillsData
+        : skillsData.filter((skill) => {
+          const category = categories.find(
+            (cat) => cat.id === selectedCategory
+          );
+          return category?.skills?.includes(skill.name);
+        });
+
+    return (
+      <section className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 py-20 relative overflow-hidden">      {/* Background decoration */}
+        <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5" />
+        <div className="relative z-10 max-w-7xl mx-auto px-6">
+          {/* Header */}
+          <div className="text-center mb-16">
+            <h2 className="text-5xl font-bold text-primary mb-4">
+              <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
+                Technical Expertise
+              </span>
+            </h2>
+            <p className="text-muted text-xl max-w-2xl mx-auto">
+              Interactive skill cards showcasing my technical proficiency. Click
+              any card to explore details and original docs.
             </p>
           </div>
 
-          <div className="flex items-center justify-between mb-6">
-
-            <div className="text-center">
-              <div className="text-2xl font-bold text-slate-900 dark:text-white">{skill.experience}</div>
-              <div className="text-xs text-slate-500">Experience</div>
-            </div>
-          </div>
-        </div>
-
-        <div className="mt-auto">
-          <a
-            href={skill.docs}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="w-full bg-slate-900 dark:bg-slate-700 hover:bg-slate-800 dark:hover:bg-slate-600 text-white text-sm py-3 px-4 rounded-lg flex items-center justify-center gap-2 transition-colors duration-300 mb-3"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <span>View Documentation</span>
-            <ExternalLink className="w-4 h-4" />
-          </a>
-
-          <button
-            className="w-full bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-900 dark:text-white text-sm py-2 px-4 rounded-lg transition-colors duration-300"
-            onClick={(e) => {
-              e.stopPropagation();
-              setIsFlipped(false);
-            }}
-          >
-            ← Back to Skills
-          </button>
-        </div>
-      </button>
-    </div>
-  );
-};
-
-function Skills() {
-  const [selectedCategory, setSelectedCategory] = useState("all");
-
-  const categories = [
-    { id: "all", name: "All Skills", count: skillsData.length },
-    { id: "languages", name: "Languages", skills: ["Java", "Python", "CSS"] },
-    { id: "ai", name: "AI/ML", skills: ["TensorFlow", "PyTorch"] },
-    {
-      id: "frameworks",
-      name: "Frameworks",
-      skills: ["Spring", "Flask", "React"],
-    },
-    { id: "tools", name: "Tools", skills: ["AWS", "Docker"] },
-  ];
-
-  const filteredSkills =
-    selectedCategory === "all"
-      ? skillsData
-      : skillsData.filter((skill) => {
-        const category = categories.find(
-          (cat) => cat.id === selectedCategory
-        );
-        return category?.skills?.includes(skill.name);
-      });
-
-  return (
-    <section className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 dark:from-slate-900 dark:to-slate-800 py-20 relative overflow-hidden">      {/* Background decoration */}
-      <div className="absolute inset-0 bg-gradient-to-r from-blue-500/5 via-purple-500/5 to-cyan-500/5" />
-      <div className="relative z-10 max-w-7xl mx-auto px-6">
-        {/* Header */}
-        <div className="text-center mb-16">
-          <h2 className="text-5xl font-bold text-primary mb-4">
-            <span className="bg-gradient-to-r from-blue-600 via-purple-600 to-cyan-500 bg-clip-text text-transparent">
-              Technical Expertise
-            </span>
-          </h2>
-          <p className="text-muted text-xl max-w-2xl mx-auto">
-            Interactive skill cards showcasing my technical proficiency. Click
-            any card to explore details and original docs.
-          </p>
-        </div>
-
-        {/* Category Filter */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
-          {categories.map((category) => (
-            <button
-              key={category.id}
-              onClick={() => setSelectedCategory(category.id)}
-              className={`
+          {/* Category Filter */}
+          <div className="flex flex-wrap justify-center gap-3 mb-12">
+            {categories.map((category) => (
+              <button
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`
             px-6 py-3 rounded-full font-medium transition-all duration-300
             ${selectedCategory === category.id
-                  ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg scale-105"
-                  : "bg-card border border-theme text-muted hover:border-blue-500/50 hover:text-primary"
-                }
+                    ? "bg-gradient-to-r from-blue-500 to-purple-500 text-white shadow-lg scale-105"
+                    : "bg-card border border-theme text-muted hover:border-blue-500/50 hover:text-primary"
+                  }
           `}
-            >
-              {category.name}
-              {category.count && (
-                <span className="ml-2 text-xs opacity-75">
-                  ({category.count})
-                </span>
-              )}
-            </button>
-          ))}
-        </div>
+              >
+                {category.name}
+                {category.count && (
+                  <span className="ml-2 text-xs opacity-75">
+                    ({category.count})
+                  </span>
+                )}
+              </button>
+            ))}
+          </div>
 
-        {/* Skills Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6">
-          {filteredSkills.map((skill, index) => (
+          {/* Skills Grid */}
+          <div className="grid gap-8" style={{ gridTemplateColumns: 'repeat(3, minmax(385px, 1fr))' }}>          {filteredSkills.map((skill, index) => (
             <SkillCard key={skill.name} skill={skill} index={index} />
           ))}
-        </div>
+          </div>
 
-        {/* Stats */}
-        <div className="mt-16 text-center">
-          <div className="inline-flex items-center gap-8 bg-card/80 backdrop-blur-sm border border-theme rounded-2xl px-8 py-4">
-            <div>
-              <div className="text-2xl font-bold text-primary">
-                {skillsData.length}
+          {/* Stats */}
+          <div className="mt-16 text-center">
+            <div className="inline-flex items-center gap-8 bg-card/80 backdrop-blur-sm border border-theme rounded-2xl px-8 py-4">
+              <div>
+                <div className="text-2xl font-bold text-primary">
+                  {skillsData.length}
+                </div>
+                <div className="text-sm text-muted">Technologies</div>
               </div>
-              <div className="text-sm text-muted">Technologies</div>
-            </div>
-            <div className="w-px h-8 bg-theme" />
-            <div>
-              <div className="text-2xl font-bold text-primary">
-                {Math.round(
-                  skillsData.reduce((acc, skill) => acc + skill.level, 0) /
-                  skillsData.length
-                )}
-                %
+              <div className="w-px h-8 bg-theme" />
+              <div>
+                <div className="text-2xl font-bold text-primary">
+                  {Math.round(
+                    skillsData.reduce((acc, skill) => acc + skill.level, 0) /
+                    skillsData.length
+                  )}
+                  %
+                </div>
+                <div className="text-sm text-muted">Avg Proficiency</div>
               </div>
-              <div className="text-sm text-muted">Avg Proficiency</div>
-            </div>
-            <div className="w-px h-8 bg-theme" />
-            <div>
-              <div className="text-2xl font-bold text-primary">3+</div>
-              <div className="text-sm text-muted">Years Experience</div>
+              <div className="w-px h-8 bg-theme" />
+              <div>
+                <div className="text-2xl font-bold text-primary">3+</div>
+                <div className="text-sm text-muted">Years Experience</div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-      <style>{`
+        <style>{`
   .perspective-1000 {
     perspective: 1000px;
   }
@@ -352,8 +361,8 @@ function Skills() {
     transform-style: preserve-3d;
   }
 `}</style>
-    </section>
-  );
+      </section>
+    );
+  }
 }
-
 export default Skills;
