@@ -1,7 +1,7 @@
 import "../styles/resumebutton.css"
 const ResumeButton = () => {
     return (
-        <div style={{ transform: "scale(0.15)", transformOrigin: "center", display: "inline-block", width: 40, height: 40, position: "relative", top: -8, right: -12 }}>
+        <div style={{ transform: "scale(0.15)", transformOrigin: "center", display: "inline-block", width: 40, height: 40 }}>
             <div className="ms-container">
                 <label htmlFor="ms-download">
                     <div className="ms-content">

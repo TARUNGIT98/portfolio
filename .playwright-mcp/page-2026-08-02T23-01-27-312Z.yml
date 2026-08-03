@@ -1,0 +1,15 @@
+- navigation [ref=f8e3]:
+  - generic [ref=f8e5]:
+    - link "tarun sirapurapu" [ref=f8e6] [cursor=pointer]:
+      - /url: /
+      - generic [ref=f8e7]: tarun
+      - generic [ref=f8e8]: sirapurapu
+    - generic [ref=f8e9]:
+      - link "About" [ref=f8e10] [cursor=pointer]:
+        - /url: "#about"
+      - link "Projects" [ref=f8e11] [cursor=pointer]:
+        - /url: "#projects"
+      - link "Work" [ref=f8e12] [cursor=pointer]:
+        - /url: "#work"
+      - link "Contact" [ref=f8e13] [cursor=pointer]:
+        - /url: "#contact"

@@ -1,0 +1,51 @@
+- generic [ref=f16e2]:
+  - navigation [ref=f16e3]:
+    - generic [ref=f16e5]:
+      - link "tarun sirapurapu" [ref=f16e6] [cursor=pointer]:
+        - /url: /
+        - generic [ref=f16e7]: tarun
+        - generic [ref=f16e8]: sirapurapu
+      - generic [ref=f16e9]:
+        - link "About" [ref=f16e10] [cursor=pointer]:
+          - /url: "#about"
+        - link "Projects" [ref=f16e11] [cursor=pointer]:
+          - /url: "#projects"
+        - link "Work" [ref=f16e12] [cursor=pointer]:
+          - /url: "#work"
+        - link "Contact" [ref=f16e13] [cursor=pointer]:
+          - /url: "#contact"
+  - generic [ref=f16e25]:
+    - paragraph [ref=f16e26]: Hello, I'm
+    - heading "Sai Tarun Sirapurapu" [level=1] [ref=f16e27]
+    - paragraph [ref=f16e28]:
+      - text: Developer at
+      - strong [ref=f16e29]: Reynolds & Reynolds
+      - text: ", building enterprise-grade web applications with React and TypeScript. Before this: telecom-scale backend systems at CGI, open-source ML pipelines, and a master's in computer science."
+    - paragraph [ref=f16e30]: I'm working toward the intersection of AI and product — building intelligent, scalable software that feels effortless to use.
+  - generic [ref=f16e31]:
+    - heading "Personal Projects" [level=2] [ref=f16e32]
+    - generic [ref=f16e33]:
+      - generic [ref=f16e34]:
+        - link [ref=f16e35] [cursor=pointer]:
+          - /url: http://ec2-18-116-72-123.us-east-2.compute.amazonaws.com/
+          - img "Real Estate Analysis" [ref=f16e36]
+        - generic [ref=f16e37]:
+          - heading "Real Estate Analysis" [level=3] [ref=f16e38]
+          - paragraph [ref=f16e39]: Regression model for real-estate price prediction. Developed using Python on backend and React on front end. Deployed on AWS EC2.
+          - generic [ref=f16e40]: Python, pandas, Flask, React
+      - generic [ref=f16e41]:
+        - link [ref=f16e42] [cursor=pointer]:
+          - /url: https://tarungit98.github.io/megasandesham/
+          - img "Megasandesham!" [ref=f16e43]
+        - generic [ref=f16e44]:
+          - heading "Megasandesham!" [level=3] [ref=f16e45]
+          - paragraph [ref=f16e46]: This dynamic, responsive weather application features condition-based weather cards that dynamically adjust their backgrounds and icons to reflect current conditions.
+          - generic [ref=f16e47]: React, Tailwind CSS, OpenweatherMap API
+      - generic [ref=f16e48]:
+        - link [ref=f16e49] [cursor=pointer]:
+          - /url: https://ainewscurator.netlify.app/
+          - img "AI News Curator" [ref=f16e50]
+        - generic [ref=f16e51]:
+          - heading "AI News Curator" [level=3] [ref=f16e52]
+          - paragraph [ref=f16e53]: Personalized News Curator is a full-stack application that curates real-time news based on user preferences and selected regions.
+          - generic [ref=f16e54]: Java, DJL, React, Docker, Postgres, Render
