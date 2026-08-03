@@ -1,0 +1,123 @@
+/* learning.css — "Currently learning" section */
+.learning-card {
+  position: relative;
+  overflow: hidden;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 2.25rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+/* soft indigo wash in the corner */
+.learning-card::before {
+  content: "";
+  position: absolute;
+  top: -120px;
+  right: -120px;
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--tint-primary), transparent 70%);
+  pointer-events: none;
+}
+
+.learning-head {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+}
+
+.learning-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  color: var(--color-primary);
+  background: var(--tint-primary);
+}
+
+.learning-status .dsa-dot {
+  animation: dsa-pulse 2s ease-in-out infinite;
+}
+
+.learning-title {
+  font-size: 1.6rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+  position: relative;
+}
+
+.learning-body {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: var(--text-body);
+  max-width: 640px;
+  margin-bottom: 1.75rem;
+  position: relative;
+}
+
+.learning-body strong {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.learning-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  position: relative;
+}
+
+.learning-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-card);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition:
+    transform 0.35s var(--ease-bounce),
+    border-color 0.25s ease,
+    background 0.25s ease,
+    color 0.25s ease;
+}
+
+.learning-chip:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-primary);
+  background: var(--color-primary);
+  color: #fff;
+}
+
+.learning-chip.ghost {
+  border-style: dashed;
+  color: var(--color-muted);
+}
+
+.learning-chip.ghost:hover {
+  border-color: var(--color-mint);
+  background: var(--color-mint);
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  .learning-card {
+    padding: 1.75rem 1.5rem;
+  }
+  .learning-title {
+    font-size: 1.35rem;
+  }
+}

@@ -1,0 +1,243 @@
+/* dsa.css — "I still DSA" section */
+.dsa-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.dsa-header .section-heading {
+  margin-bottom: 0.6rem;
+}
+
+.dsa-subtitle {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--color-muted);
+  max-width: 620px;
+  margin: 0 auto;
+}
+
+.dsa-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+@media (max-width: 860px) {
+  .dsa-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---- shared card ---- */
+.dsa-card {
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-xl);
+  padding: 1.75rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.4s var(--ease-bounce),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.dsa-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--tint-primary-ring);
+}
+
+.dsa-card-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.dsa-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+/* live / static status pill */
+.dsa-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.68rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  color: var(--color-mint);
+  background: var(--tint-mint);
+  white-space: nowrap;
+}
+
+.dsa-status.static {
+  color: var(--color-muted);
+  background: rgba(107, 114, 128, 0.1);
+}
+
+.dsa-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.dsa-status.live .dsa-dot {
+  animation: dsa-pulse 2s ease-in-out infinite;
+}
+
+@keyframes dsa-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50%      { opacity: 0.35; transform: scale(0.8); }
+}
+
+/* ---- hero figure ---- */
+.dsa-hero {
+  display: flex;
+  align-items: baseline;
+  gap: 0.55rem;
+  margin-bottom: 0.25rem;
+}
+
+.dsa-hero-value {
+  font-size: 3.25rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-variant-numeric: tabular-nums;
+}
+
+.dsa-hero-suffix {
+  font-size: 1rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.dsa-hero-label {
+  font-size: 0.85rem;
+  color: var(--color-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* ---- meters ---- */
+.dsa-meters {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.dsa-meter-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: 0.4rem;
+}
+
+.dsa-meter-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.dsa-meter-value {
+  font-size: 0.82rem;
+  color: var(--color-muted);
+  font-variant-numeric: tabular-nums;
+}
+
+.dsa-meter-value b {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.dsa-track {
+  height: 8px;
+  border-radius: 999px;
+  background: var(--meter-track);
+  overflow: hidden;
+}
+
+.dsa-fill {
+  height: 100%;
+  border-radius: 999px;
+  min-width: 4px;
+  transform-origin: left center;
+  animation: dsa-grow 0.9s var(--ease-bounce) both;
+}
+
+@keyframes dsa-grow {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* ---- footer link ---- */
+.dsa-foot {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.dsa-note {
+  font-size: 0.75rem;
+  color: var(--color-muted);
+}
+
+.dsa-link {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition: gap 0.2s ease;
+}
+
+.dsa-link:hover {
+  text-decoration: underline;
+}
+
+/* ---- states ---- */
+.dsa-msg {
+  font-size: 0.9rem;
+  color: var(--color-muted);
+  padding: 2rem 0;
+  text-align: center;
+}
+
+.dsa-skeleton {
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg,
+    rgba(0,0,0,0.05) 25%,
+    rgba(0,0,0,0.09) 37%,
+    rgba(0,0,0,0.05) 63%);
+  background-size: 400% 100%;
+  animation: dsa-shimmer 1.4s ease infinite;
+}
+
+@keyframes dsa-shimmer {
+  from { background-position: 100% 50%; }
+  to   { background-position: 0 50%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dsa-fill,
+  .dsa-skeleton,
+  .dsa-status.live .dsa-dot {
+    animation: none;
+  }
+}

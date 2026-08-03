@@ -1,78 +1,161 @@
-import React, { useEffect, useState } from 'react';
-import { PieChart, Pie, Cell, Tooltip, ResponsiveContainer } from 'recharts';
+import { useEffect, useState } from "react";
+
+/* Sequential mint ramp, light → dark as difficulty rises.
+   Validated: lightness band, chroma floor, and CVD separation all pass.
+   Every meter is text-labelled, so colour never carries identity alone. */
+const DIFFICULTY_COLOR = {
+    Easy: "var(--difficulty-1)",
+    Medium: "var(--difficulty-2)",
+    Hard: "var(--difficulty-3)",
+};
+
+const ENDPOINTS = [
+    (u) => `https://leetcode-api-faisalshohag.vercel.app/${u}`,
+    (u) => `https://alfa-leetcode-api.onrender.com/${u}/solved`,
+];
+
+const normalise = (json) => {
+    const easy = json.easySolved ?? 0;
+    const medium = json.mediumSolved ?? 0;
+    const hard = json.hardSolved ?? 0;
+    const total = json.totalSolved ?? json.solvedProblem ?? easy + medium + hard;
+    if (!total && !easy && !medium && !hard) return null;
+    return {
+        total,
+        ranking: json.ranking ?? null,
+        breakdown: [
+            { name: "Easy", solved: easy, of: json.totalEasy ?? null },
+            { name: "Medium", solved: medium, of: json.totalMedium ?? null },
+            { name: "Hard", solved: hard, of: json.totalHard ?? null },
+        ],
+    };
+};
 
 const LeetCodeCard = ({ username }) => {
-    const [data, setData] = useState(null);
-    const [totalSolved, setTotalSolved] = useState(0);
+    const [stats, setStats] = useState(null);
     const [error, setError] = useState(null);
 
-    const COLORS = {
-        Easy: '#34D399',   // green
-        Medium: '#FBBF24', // yellow
-        Hard: '#EF4444',   // red
-    };
-
-    const fetchLeetCodeStats = async () => {
-        try {
-            const res = await fetch(`https://leetcode-stats-api.herokuapp.com/${username}`);
-            const json = await res.json();
-
-            if (json.status === 'success' || json.totalSolved >= 0) {
-                const chartData = [
-                    { name: 'Easy', value: json.easySolved },
-                    { name: 'Medium', value: json.mediumSolved },
-                    { name: 'Hard', value: json.hardSolved },
-                ];
-                setData(chartData);
-                setTotalSolved(json.totalSolved);
-            } else {
-                throw new Error('Invalid response');
-            }
-        } catch (err) {
-            console.error('Failed to fetch LeetCode stats:', err);
-            setError('Failed to load LeetCode stats.');
-        }
-    };
-
     useEffect(() => {
-        fetchLeetCodeStats();
+        let cancelled = false;
+        const cacheKey = `leetcode:${username}`;
+
+        /* Show yesterday's numbers instantly, then refresh in the background.
+           These APIs are free-tier and can cold-start for several seconds. */
+        try {
+            const cached = sessionStorage.getItem(cacheKey);
+            if (cached) setStats(JSON.parse(cached));
+        } catch { /* private mode */ }
+
+        (async () => {
+            for (const build of ENDPOINTS) {
+                try {
+                    const res = await fetch(build(username));
+                    if (!res.ok) continue;
+                    const parsed = normalise(await res.json());
+                    if (parsed && !cancelled) {
+                        setStats(parsed);
+                        try {
+                            sessionStorage.setItem(cacheKey, JSON.stringify(parsed));
+                        } catch { /* quota or private mode */ }
+                        return;
+                    }
+                } catch {
+                    /* try the next endpoint */
+                }
+            }
+            /* Only surface an error if we have nothing at all to show */
+            if (!cancelled) {
+                setStats((current) => {
+                    if (!current) setError("Couldn't reach LeetCode right now.");
+                    return current;
+                });
+            }
+        })();
+
+        return () => { cancelled = true; };
     }, [username]);
 
+    /* Bars are part-to-whole of what I've actually solved, so the width and the
+       number always tell the same story. */
+    const solvedTotal = stats
+        ? Math.max(stats.breakdown.reduce((n, d) => n + d.solved, 0), 1)
+        : 1;
+
     return (
-        <div className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-xl shadow-md text-center" data-aos="fade-up">
-            <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white flex justify-center items-center gap-2">
-                🧠 LeetCode Stats
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-1">
-                Total Solved: <span className="font-bold text-blue-600 dark:text-blue-400">{totalSolved}</span>
-            </p>
-            <p className="text-sm text-gray-500 dark:text-gray-400 mb-6">
-                via public REST API
-            </p>
+        <div className="dsa-card">
+            <div className="dsa-card-head">
+                <span className="dsa-card-title">LeetCode</span>
+                <span className={`dsa-status ${stats ? "live" : "static"}`}>
+                    <span className="dsa-dot" />
+                    {stats ? "Live" : "Loading"}
+                </span>
+            </div>
 
-            {error && <p className="text-red-500 text-sm">{error}</p>}
+            {error && <p className="dsa-msg">{error}</p>}
 
-            {data ? (
-                <ResponsiveContainer width="100%" height={250}>
-                    <PieChart>
-                        <Pie
-                            data={data}
-                            dataKey="value"
-                            nameKey="name"
-                            outerRadius={90}
-                            innerRadius={50}
-                            label={({ name, percent }) => `${name}: ${(percent * 100).toFixed(0)}%`}
-                        >
-                            {data.map((entry, index) => (
-                                <Cell key={`cell-${index}`} fill={COLORS[entry.name]} />
-                            ))}
-                        </Pie>
-                        <Tooltip />
-                    </PieChart>
-                </ResponsiveContainer>
-            ) : (
-                !error && <p className="text-sm text-gray-400">Loading stats...</p>
+            {!stats && !error && (
+                <div className="dsa-meters" aria-busy="true">
+                    <div className="dsa-skeleton" />
+                    <div className="dsa-skeleton" />
+                    <div className="dsa-skeleton" />
+                </div>
             )}
+
+            {stats && (
+                <>
+                    <div className="dsa-hero">
+                        <span className="dsa-hero-value">{stats.total}</span>
+                        <span className="dsa-hero-suffix">problems solved</span>
+                    </div>
+                    <p className="dsa-hero-label">
+                        {stats.ranking
+                            ? `Global rank #${stats.ranking.toLocaleString()} · by difficulty below`
+                            : "Broken down by difficulty below"}
+                    </p>
+
+                    <div className="dsa-meters">
+                        {stats.breakdown.map((d) => (
+                            <div key={d.name}>
+                                <div className="dsa-meter-top">
+                                    <span className="dsa-meter-name">{d.name}</span>
+                                    <span className="dsa-meter-value">
+                                        <b>{d.solved}</b>
+                                        {` · ${Math.round((d.solved / solvedTotal) * 100)}%`}
+                                    </span>
+                                </div>
+                                <div
+                                    className="dsa-track"
+                                    role="meter"
+                                    aria-valuenow={d.solved}
+                                    aria-valuemin={0}
+                                    aria-valuemax={solvedTotal}
+                                    aria-label={`${d.name} share of problems solved`}
+                                >
+                                    <div
+                                        className="dsa-fill"
+                                        style={{
+                                            width: `${(d.solved / solvedTotal) * 100}%`,
+                                            background: DIFFICULTY_COLOR[d.name],
+                                        }}
+                                    />
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </>
+            )}
+
+            <div className="dsa-foot">
+                <span className="dsa-note">Fetched live on page load</span>
+                <a
+                    className="dsa-link"
+                    href={`https://leetcode.com/u/${username}/`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View profile →
+                </a>
+            </div>
         </div>
     );
 };

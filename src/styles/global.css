@@ -1,34 +1,120 @@
-/* A pseudo class of global (star ramcharan) css variables for this portfolio */
+/* Global design tokens for this portfolio */
 :root {
-  /* Colors */
-  --color-primary: #5558fc;
-  --color-accent: #F07167;
-  --color-green: #a7c957;
+  /* Brand colors */
+  --color-primary: #5558fc;       /* indigo — work, links, accents */
+  --color-mint: #00704A;          /* starbucks green — time periods, education */
   --color-muted: #6B7280;
+
+  /* Tinted surfaces (derived from the brand colors) */
+  --tint-primary: rgba(85, 88, 252, 0.08);
+  --tint-primary-ring: rgba(85, 88, 252, 0.25);
+  --tint-mint: rgba(0, 112, 74, 0.09);
 
   /* Backgrounds */
   --bg-primary: #FAFAF7;
+  --bg-card: #FFFFFF;
+  --bg-paper: #FDFCF9;
 
-  /* Text Colors */
+  /* Text */
   --text-primary: #1A1A2E;
+  --text-body: #3A3A4E;
 
-  /* Spacing Scale */
-  --space-xs: 0.5rem;
-  --space-sm: 1rem;
-  --space-md: 1.5rem;
-  --space-lg: 2rem;
-  --space-xl: 3rem;
-  --space-2xl: 4rem;
+  /* Borders & shadows */
+  --border-subtle: rgba(0, 0, 0, 0.06);
+  --border-soft: rgba(0, 0, 0, 0.12);
+  --shadow-lift: 0 20px 44px rgba(0, 0, 0, 0.11);
+  --shadow-paper:
+    0 1px 2px rgba(0, 0, 0, 0.04),
+    0 12px 32px rgba(0, 0, 0, 0.06),
+    0 32px 64px rgba(0, 0, 0, 0.04);
+
+  /* Motion */
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   /* Typography */
-  --font-header: "Montserrat";
-  --font-body: "Plus Jakarta Sans", ui-serif, Georgia, serif;
+  --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
-  /* Border Radius */
-  --radius-sm: 0.5rem;
-  --radius-md: 0.75rem;
+  /* Border radius */
   --radius-lg: 1rem;
   --radius-xl: 1.25rem;
+
+  /* Meter ramp — light mode */
+  --meter-track: rgba(0, 0, 0, 0.06);
+  --difficulty-1: #54BF93;
+  --difficulty-2: #189070;
+  --difficulty-3: #00704A;
+
+  --navbar-blur-bg: rgba(250, 250, 247, 0.72);
+  /* Stands in for the WebGL sky until it loads */
+  --sky-fallback: linear-gradient(to bottom, #9dc6e0 0%, #cfd9e2 70%, #FAFAF7 100%);
+  --hero-haze: linear-gradient(to bottom,
+    rgba(250, 250, 247, 0) 0%,
+    rgba(250, 250, 247, 0.18) 60%,
+    rgba(250, 250, 247, 0.4) 100%);
+
+  color-scheme: light;
+}
+
+/* ── Dark theme ───────────────────────────────────────────────
+   Only the tokens change; no component stylesheet knows about
+   the theme. Brand hues are lifted so they stay legible on dark. */
+:root[data-theme="dark"] {
+  --color-primary: #8b8dff;
+  --color-mint: #4dd4a0;
+  --color-muted: #8a8fa0;
+
+  --tint-primary: rgba(139, 141, 255, 0.14);
+  --tint-primary-ring: rgba(139, 141, 255, 0.35);
+  --tint-mint: rgba(77, 212, 160, 0.14);
+
+  --bg-primary: #12131a;
+  --bg-card: #1a1c26;
+  --bg-paper: #171922;
+
+  --text-primary: #edeef2;
+  --text-body: #b8bcc8;
+
+  --border-subtle: rgba(255, 255, 255, 0.08);
+  --border-soft: rgba(255, 255, 255, 0.16);
+  --shadow-lift: 0 20px 44px rgba(0, 0, 0, 0.55);
+  --shadow-paper:
+    0 1px 2px rgba(0, 0, 0, 0.3),
+    0 12px 32px rgba(0, 0, 0, 0.4),
+    0 32px 64px rgba(0, 0, 0, 0.3);
+
+  --meter-track: rgba(255, 255, 255, 0.1);
+  --difficulty-1: #6fe0b0;
+  --difficulty-2: #3fbb8c;
+  --difficulty-3: #1f9a70;
+
+  --navbar-blur-bg: rgba(18, 19, 26, 0.72);
+  --sky-fallback: linear-gradient(to bottom, #111a2e 0%, #14161f 70%, #12131a 100%);
+  --hero-haze: linear-gradient(to bottom,
+    rgba(18, 19, 26, 0) 0%,
+    rgba(18, 19, 26, 0.18) 60%,
+    rgba(18, 19, 26, 0.4) 100%);
+
+  color-scheme: dark;
+}
+
+/* Theme swap shouldn't flash — but respect reduced-motion users */
+body,
+.navbar,
+.project-card,
+.career-card,
+.dsa-card,
+.skill-card,
+.story-card,
+.learning-card,
+.footer {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  body, .navbar, .project-card, .career-card, .dsa-card,
+  .skill-card, .story-card, .learning-card, .footer {
+    transition: none;
+  }
 }
 
 *, *::before, *::after {
@@ -37,13 +123,14 @@
   padding: 0;
 }
 
-html, body {
-  width: 100%;
-  height: 100%;
+html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 body {
+  width: 100%;
+  min-height: 100%;
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
@@ -51,4 +138,50 @@ body {
 
 #root {
   width: 100%;
+}
+
+/* Clear the fixed navbar when jumping to a section anchor */
+section[id] {
+  scroll-margin-top: 6rem;
+}
+
+/* Shared section heading */
+.section-heading {
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  margin-bottom: 2.5rem;
+}
+
+/* One page gutter, defined once */
+.section-shell {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+/* The card recipe every section shares — hover behaviour lives here only */
+.surface-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+  transition:
+    transform 0.4s var(--ease-bounce),
+    box-shadow 0.35s ease,
+    border-color 0.35s ease;
+}
+
+.surface-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lift);
+  border-color: var(--tint-primary-ring);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .surface-card,
+  .surface-card:hover {
+    transform: none;
+    transition: box-shadow 0.35s ease, border-color 0.35s ease;
+  }
 }

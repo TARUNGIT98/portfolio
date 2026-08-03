@@ -1,19 +1,18 @@
-import React from 'react';
+import "../styles/tabs.css";
 
 const Tabs = ({ tabs, active, setActive }) => {
     return (
-        <div className="flex justify-center space-x-4">
+        <div className="tabs" role="tablist">
             {tabs.map((tab) => (
                 <button
                     key={tab.id}
+                    role="tab"
+                    aria-selected={active === tab.id}
+                    className={active === tab.id ? "tab is-active" : "tab"}
                     onClick={() => setActive(tab.id)}
-                    className={`px-5 py-2 rounded-full text-sm font-medium transition-colors
-            ${active === tab.id
-                            ? 'bg-blue-600 text-white shadow-md'
-                            : 'bg-gray-200 text-gray-700 hover:bg-gray-300 dark:bg-gray-800 dark:text-gray-300 dark:hover:bg-gray-700'
-                        }`}
                 >
                     {tab.label}
+                    {tab.count != null && <span className="tab-count">{tab.count}</span>}
                 </button>
             ))}
         </div>

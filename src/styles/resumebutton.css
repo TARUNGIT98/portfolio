@@ -1,7 +1,9 @@
+/* Animated download button.
+   Every colour reads from --text-primary, so it inverts with the theme. */
 .ms-container {
 	width: 15px;
-    height: 10px;
-    position: relative;
+	height: 10px;
+	position: relative;
 }
 
 .ms-content {
@@ -10,10 +12,8 @@
 	height: 200px;
 	top: 0;
 	left: 0;
-	right: 7;
-	bottom: 1;
 	margin: auto;
-	border: 10px solid #2ea4f2;
+	border: 10px solid var(--text-primary);
 	border-radius: 100%;
 }
 
@@ -32,9 +32,11 @@
 	transform: rotate(0deg);
 	transition: transform 0s ease;
 }
+
 #ms-download {
 	display: none;
 }
+
 #ms-download:checked ~ .ms-line-down-container {
 	transform: rotate(-360deg);
 	transition: transform 1.5s ease 1.25s;
@@ -49,7 +51,7 @@
 	margin: auto;
 	width: 10px;
 	height: 125px;
-	background: #080000;
+	background: var(--text-primary);
 	border-radius: 50px;
 	transition: height .5s ease;
 }
@@ -59,6 +61,7 @@
 	top: -20px;
 	animation: ms-bounce .5s forwards .55s;
 }
+
 #ms-download:checked ~ .ms-line-down-container .ms-line-down:before {
 	content: '';
 	position: absolute;
@@ -108,7 +111,7 @@
 	width: 10px;
 	height: 75px;
 	bottom: -10px;
-	background: #060000;
+	background: var(--text-primary);
 	border-radius: 50px;
 	transition: transform .15s ease .47s, left .15s ease .47s, right .15s ease .47s;
 }
@@ -123,19 +126,12 @@
 	transform: rotate(-45deg);
 }
 
+/* translate rather than `top` so the bounce doesn't trigger layout on every frame */
 @keyframes ms-bounce {
-	0% {
-		top: -20px;
-	}
-	25% {
-		top: -250px;
-	}
-	50% {
-		top: -275px;
-	}
-	100% {
-		top: -190px;
-	}
+	0%   { transform: translateY(0); }
+	25%  { transform: translateY(-230px); }
+	50%  { transform: translateY(-255px); }
+	100% { transform: translateY(-170px); }
 }
 
 @keyframes ms-check-left {
@@ -167,10 +163,6 @@
 }
 
 @keyframes ms-border-fill {
-	0% {
-		border: 10px solid transparent;
-	}
-	100% {
-		border: 10px solid #0d0101;
-	}
+	0%   { border-color: transparent; }
+	100% { border-color: var(--text-primary); }
 }

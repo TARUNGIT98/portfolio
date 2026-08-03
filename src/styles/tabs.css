@@ -1,0 +1,52 @@
+/* tabs.css — pill filter row */
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.6rem;
+}
+
+.tab {
+  font-family: inherit;
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.55rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid var(--border-soft);
+  background: var(--bg-card);
+  color: var(--text-body);
+  cursor: pointer;
+  transition:
+    transform 0.35s var(--ease-bounce),
+    background 0.22s ease,
+    border-color 0.22s ease,
+    color 0.22s ease;
+}
+
+.tab:hover {
+  transform: translateY(-2px);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+.tab.is-active {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #fff;
+}
+
+.tab.is-active:hover {
+  color: #fff;
+}
+
+.tab-count {
+  margin-left: 0.4rem;
+  font-size: 0.75rem;
+  opacity: 0.65;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tab {
+    transition: background 0.22s ease, border-color 0.22s ease, color 0.22s ease;
+  }
+}

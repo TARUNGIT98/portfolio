@@ -3,13 +3,40 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portfolio</title>
+  <title>Tarun Sirapurapu — Developer</title>
+  <meta name="description"
+    content="Developer at Reynolds &amp; Reynolds building enterprise web applications with React and TypeScript, working toward the intersection of AI and product." />
+  <meta name="author" content="Sai Tarun Sirapurapu" />
+  <link rel="canonical" href="https://tarunsirapurapu.space/" />
+  <meta name="theme-color" content="#FAFAF7" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#12131a" media="(prefers-color-scheme: dark)" />
+
+  <!-- Link previews (LinkedIn, Slack, iMessage, X) -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Tarun Sirapurapu — Developer" />
+  <meta property="og:description"
+    content="Developer at Reynolds &amp; Reynolds building enterprise web applications with React and TypeScript, working toward the intersection of AI and product." />
+  <meta property="og:url" content="https://tarunsirapurapu.space/" />
+  <meta name="twitter:card" content="summary_large_image" />
   <!-- Google Fonts Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   
   <!-- Plus Jakarta Sans Link (Weights: 400, 500, 600) -->
   <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400..600;1,400..600&display=swap" rel="stylesheet">
+
+  <!-- Set the theme before first paint so dark-mode visitors never see a white flash -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("theme");
+        var theme = (saved === "light" || saved === "dark")
+          ? saved
+          : (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+        document.documentElement.setAttribute("data-theme", theme);
+      } catch (e) { /* private mode — fall back to light */ }
+    })();
+  </script>
 </head>
 <body>
   <div id="root"></div>

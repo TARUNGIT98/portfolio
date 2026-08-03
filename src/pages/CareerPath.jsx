@@ -1,80 +1,111 @@
-// import "../styles/careerpath.css";
+import { useRef, useState, useEffect } from "react";
+import "../styles/careerpath.css";
 
 function CareerPath() {
+    const trackRef = useRef(null);
+    const [atStart, setAtStart] = useState(true);
+    const [atEnd, setAtEnd] = useState(false);
+
+    const updateArrows = () => {
+        const el = trackRef.current;
+        if (!el) return;
+        setAtStart(el.scrollLeft <= 2);
+        setAtEnd(el.scrollLeft + el.clientWidth >= el.scrollWidth - 2);
+    };
+
+    useEffect(updateArrows, []);
+
+    const scrollBy = (dir) => {
+        const el = trackRef.current;
+        if (!el) return;
+        el.scrollBy({ left: dir * 324, behavior: "smooth" });
+    };
+
     const timeline = [
         {
-            range: "Aug 2024 to Present",
-            title: "Full Stack Web Developer",
+            range: "Aug 2025 — Present",
+            title: "Developer",
             place: "Reynolds and Reynolds",
             location: "Dayton, OH, USA",
+            kind: "work",
         },
         {
-            range: "Feb 2024 to Aug 2024",
-            title: "Data Scientist",
-            place: "Dream Studio LLC",
-            location: "Remote,USA",
+            range: "Feb 2025 — Aug 2025",
+            title: "Open-Source ML Contributor",
+            place: "Dream Studio (Model Earth)",
+            location: "Remote, USA",
+            kind: "work",
         },
         {
-            range: "Jan 2023 to Dec 2024",
-            title: "Masters in Computer Science",
+            range: "May 2023 — Dec 2024",
+            title: "Graduate Assistant, Deep Learning",
             place: "University of Dayton",
             location: "Dayton, OH, USA",
+            kind: "work",
         },
         {
-            range: "May 2023 to Dec 2024",
-            title: "Graduate Assistant",
+            range: "Jan 2023 — Dec 2024",
+            title: "MS in Computer Science",
             place: "University of Dayton",
             location: "Dayton, OH, USA",
+            kind: "education",
         },
         {
-            range: "Oct 2020 to Dec 2022",
+            range: "Oct 2020 — Dec 2022",
             title: "Software Engineer",
             place: "CGI Inc.",
-            location: "India",
+            location: "Bangalore, India",
+            kind: "work",
         },
         {
-            range: "Aug 2016 to Sep 2020",
-            title: "Bachelors in Electronics and Communication",
+            range: "Aug 2016 — Sep 2020",
+            title: "B.Tech in Electronics & Communication",
             place: "KMIT",
             location: "Hyderabad, India",
+            kind: "education",
         },
     ];
 
     return (
-        <section className="bg-gray-50 min-h-screen flex items-center justify-center py-20" id="careerpath">
-            <div className="container-card w-full max-w-4xl">
+        <section id="work" className="section-shell career-section">
+            <div className="career-header">
                 <h2 className="section-heading">Career Path</h2>
+                <p className="career-subtitle">Where I've been, and what it taught me.</p>
+            </div>
 
-                <div className="relative pl-8">
-                    {/* Timeline line */}
-                    <div className="absolute left-3 top-0 bottom-0 w-0.5 bg-gradient-to-b from-blue-500 via-blue-400 to-transparent opacity-60"></div>
-
-                    <div className="space-y-8">
-                        {timeline.map((item, index) => (
-                            <div
-                                key={item.title + index}
-                                className="relative"
-                                data-aos="fade-up"
-                                data-aos-delay={index * 120}
-                            >
-                                {/* Timeline dot */}
-                                <div className="absolute -left-6 top-3 w-3 h-3 bg-blue-500 rounded-full border-4 border-white shadow-lg"></div>
-
-                                {/* Card */}
-                                <div className="bg-white rounded-xl p-6 shadow-sm border border-gray-100 card-hover ml-4">
-                                    <time className="text-blue-600 font-semibold text-sm tracking-wide">
-                                        {item.range}
-                                    </time>
-                                    <h3 className="text-xl font-bold text-gray-900 mt-1 mb-2">
-                                        {item.title}
-                                    </h3>
-                                    <p className="text-gray-700 font-medium">{item.place}</p>
-                                    <p className="text-gray-500 text-sm">{item.location}</p>
-                                </div>
-                            </div>
-                        ))}
+            <div className="career-track" ref={trackRef} onScroll={updateArrows}>
+                {timeline.map((item) => (
+                    <div key={item.range + item.title} className="career-card">
+                        <div className="career-meta">
+                            <span className="career-range">{item.range}</span>
+                            <span className={`career-badge ${item.kind}`}>
+                                {item.kind === "work" ? "Work" : "Education"}
+                            </span>
+                        </div>
+                        <h3>{item.title}</h3>
+                        <div className="career-place">{item.place}</div>
+                        <div className="career-location">{item.location}</div>
                     </div>
-                </div>
+                ))}
+            </div>
+
+            <div className="career-controls">
+                <button
+                    className="career-arrow"
+                    onClick={() => scrollBy(-1)}
+                    disabled={atStart}
+                    aria-label="Previous"
+                >
+                    ←
+                </button>
+                <button
+                    className="career-arrow"
+                    onClick={() => scrollBy(1)}
+                    disabled={atEnd}
+                    aria-label="Next"
+                >
+                    →
+                </button>
             </div>
         </section>
     );

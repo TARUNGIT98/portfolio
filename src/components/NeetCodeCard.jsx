@@ -1,41 +1,111 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+/* ─────────────────────────────────────────────────────────────
+   NeetCode has no public API — progress lives behind their auth,
+   so these are self-tracked. Update the numbers here.
+   ───────────────────────────────────────────────────────────── */
+const LAST_UPDATED = "August 2026";
+const SOLVED = 51;
+const TOTAL = 75;
 
-const NeetCodeCard = ({ username }) => {
+const ROADMAP = [
+    { name: "Arrays & Hashing", solved: 8, of: 8 },
+    { name: "1-D Dynamic Programming", solved: 8, of: 10 },
+    { name: "Trees", solved: 6, of: 11 },
+    { name: "Linked List", solved: 5, of: 6 },
+    { name: "Sliding Window", solved: 3, of: 4 },
+    { name: "Two Pointers", solved: 3, of: 3 },
+    { name: "Binary Search", solved: 2, of: 2 },
+    { name: "Backtracking", solved: 2, of: 2 },
+    { name: "Graphs", solved: 2, of: 6 },
+    { name: "Stack", solved: 1, of: 1 },
+    { name: "Tries", solved: 0, of: 3 },
+    { name: "Heap / Priority Queue", solved: 0, of: 1 },
+    { name: "Advanced Graphs", solved: 0, of: 1 },
+    { name: "2-D Dynamic Programming", solved: 0, of: 2 },
+];
+
+/* How many categories to show before "+N more" */
+const VISIBLE = 4;
+/* ───────────────────────────────────────────────────────────── */
+
+/* Same sequential mint ramp as the LeetCode card — deeper means further along. */
+const fillFor = (pct) =>
+    pct >= 0.99
+        ? "var(--difficulty-3)"
+        : pct >= 0.5
+            ? "var(--difficulty-2)"
+            : "var(--difficulty-1)";
+
+const NeetCodeCard = () => {
+    const ranked = [...ROADMAP].sort(
+        (a, b) => b.solved / b.of - a.solved / a.of || b.of - a.of
+    );
+    const shown = ranked.slice(0, VISIBLE);
+    const completed = ROADMAP.filter((c) => c.solved === c.of).length;
+
     return (
-        <motion.div
-            className="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 p-6 rounded-xl shadow-md text-center"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-        >
-            <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-white">
-                NeetCode Progress
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">
-                Currently grinding DSA patterns to level up 🚀
-            </p>
-
-            {/* Mock Stats – replace manually for now */}
-            <div className="flex justify-center gap-6 text-sm font-medium text-gray-800 dark:text-gray-100 mb-6">
-                <div className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg shadow-inner">
-                    Solved: <span className="font-bold text-green-600">42</span>
-                </div>
-                <div className="bg-gray-100 dark:bg-gray-700 px-4 py-2 rounded-lg shadow-inner">
-                    Easy/Med/Hard: <span className="font-bold text-yellow-500">28 / 20 / 4</span>
-                </div>
+        <div className="dsa-card">
+            <div className="dsa-card-head">
+                <span className="dsa-card-title">Blind 75</span>
+                <span className="dsa-status static">
+                    <span className="dsa-dot" />
+                    Self-tracked
+                </span>
             </div>
 
-            <a
-                href={`https://neetcode.io/practice/${username}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-block bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition"
-            >
-                🚀 View My NeetCode
-            </a>
-        </motion.div>
+            <div className="dsa-hero">
+                <span className="dsa-hero-value">{SOLVED}</span>
+                <span className="dsa-hero-suffix">of {TOTAL} completed</span>
+            </div>
+            <p className="dsa-hero-label">
+                {completed} categories fully cleared · strongest first
+            </p>
+
+            <div className="dsa-meters">
+                {shown.map((c) => {
+                    const pct = c.solved / c.of;
+                    return (
+                        <div key={c.name}>
+                            <div className="dsa-meter-top">
+                                <span className="dsa-meter-name">{c.name}</span>
+                                <span className="dsa-meter-value">
+                                    <b>{c.solved}</b> / {c.of}
+                                </span>
+                            </div>
+                            <div
+                                className="dsa-track"
+                                role="meter"
+                                aria-valuenow={c.solved}
+                                aria-valuemin={0}
+                                aria-valuemax={c.of}
+                                aria-label={`${c.name} progress`}
+                            >
+                                <div
+                                    className="dsa-fill"
+                                    style={{
+                                        width: `${pct * 100}%`,
+                                        background: fillFor(pct),
+                                    }}
+                                />
+                            </div>
+                        </div>
+                    );
+                })}
+            </div>
+
+            <div className="dsa-foot">
+                <span className="dsa-note">
+                    +{ROADMAP.length - VISIBLE} more · updated {LAST_UPDATED}
+                </span>
+                <a
+                    className="dsa-link"
+                    href="https://neetcode.io/practice"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    See the roadmap →
+                </a>
+            </div>
+        </div>
     );
 };
 

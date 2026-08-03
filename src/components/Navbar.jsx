@@ -1,13 +1,16 @@
 import { useState, useEffect } from "react";
 import "../styles/navbar.css";
 import ResumeButton from "./ResumeButton";
+import ThemeToggle from "./ThemeToggle";
 
 const Navbar = () => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
+    /* passive: the handler never calls preventDefault, and saying so lets the
+       browser scroll without waiting on us */
     const onScroll = () => setScrolled(window.scrollY > 50);
-    window.addEventListener("scroll", onScroll);
+    window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
@@ -27,7 +30,10 @@ const Navbar = () => {
             <a href="#contact">Contact</a>
           </div>
         </div>
-        <ResumeButton />
+        <div className="navbar-actions">
+          <ResumeButton />
+          <ThemeToggle />
+        </div>
       </div>
     </nav>
   );
