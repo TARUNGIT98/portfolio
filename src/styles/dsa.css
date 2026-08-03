@@ -241,3 +241,10 @@
     animation: none;
   }
 }
+
+/* Phones only */
+@media (max-width: 820px) {
+  .dsa-hero-value {
+    font-size: 2.6rem;
+  }
+}

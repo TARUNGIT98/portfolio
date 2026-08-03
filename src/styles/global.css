@@ -160,6 +160,31 @@ section[id] {
   padding: 4rem 2rem;
 }
 
+/* ── Phones only. Above 820px none of this applies. ── */
+@media (max-width: 820px) {
+  .section-shell {
+    padding: 2.75rem 1.25rem;
+  }
+
+  .section-heading {
+    font-size: 1.6rem;
+    margin-bottom: 1.5rem;
+  }
+
+  /* Filter pills scroll sideways instead of stacking into a tall block */
+  .tabs {
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    width: 100%;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .tabs::-webkit-scrollbar { display: none; }
+  .tab { flex: none; }
+}
+
 /* The card recipe every section shares — hover behaviour lives here only */
 .surface-card {
   background: var(--bg-card);

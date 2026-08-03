@@ -38,7 +38,8 @@ const CloudSky = () => {
             minHeight: 200,
             minWidth: 200,
             scale: 3,
-            scaleMobile: 12,
+            /* 12 zoomed the clouds so far in on phones that only a smear showed */
+            scaleMobile: 3,
             speed: 1,
             backgroundAlpha: 1,
             backgroundColor: 0xffffff,

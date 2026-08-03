@@ -12,8 +12,9 @@ function Home() {
   return (
     <section id="home" style={{ position: "relative" }}>
 
-      {/* Sky band — hooked to the top */}
-      <div style={{ position: "relative", height: "66vh", overflow: "hidden", background: "var(--sky-fallback)" }}>
+      {/* Sky band — hooked to the top. Height moved to CSS so it can respond
+          to screen size; identical 66vh on desktop. */}
+      <div className="sky-band">
         <Suspense fallback={null}>
           <CloudSky />
         </Suspense>

@@ -148,3 +148,10 @@
     flex-basis: 265px;
   }
 }
+
+/* Phones only — cards get a touch narrower so the next one peeks in */
+@media (max-width: 820px) {
+  .career-card {
+    flex: 0 0 260px;
+  }
+}
