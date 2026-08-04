@@ -8,20 +8,10 @@ const PAGE = "var(--bg-primary)";
 const CloudCutout = () => {
     return (
         <svg
+            className="cloud-cutout"
             viewBox="0 0 1440 260"
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
-            style={{
-                position: "absolute",
-                left: 0,
-                right: 0,
-                bottom: -1,          /* hide sub-pixel seam against the page */
-                width: "100%",
-                height: 260,
-                display: "block",
-                zIndex: 2,
-                pointerEvents: "none",
-            }}
         >
             {/* Back puffs — a translucent hint of depth behind the solid edge */}
             <path
