@@ -27,16 +27,15 @@
               padding-bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* Open: the letter supplies the height; the pocket stays below it as a base.
-   Must clear the pocket (40 + 176) plus the hint strip. */
+/* Open: the letter drives the height. Padding must clear the pocket
+   (bottom + height) plus the hint strip below it. */
 .envelope.is-open {
   min-height: 0;
   padding-bottom: 262px;
 }
 
-/* ── The letter ────────────────────────────────────────────────
-   grid-template-rows 0fr → 1fr is the one reliable way to animate to a
-   content-driven height; guessing a max-height always jumps at the end. */
+/* grid-template-rows 0fr → 1fr animates to the real content height;
+   a guessed max-height jumps when it doesn't match. */
 .letter-wrap {
   position: relative;
   z-index: 2;                      /* above the opened flap, below the pocket */
@@ -56,7 +55,7 @@
   background-color: var(--bg-paper);
   background-image: radial-gradient(rgba(26, 26, 46, 0.09) 1px, transparent 1px);
   background-size: 22px 22px;
-  /* No border or shadow while collapsed, or a hairline shows above the flap */
+  /* Transparent while collapsed, or a hairline shows above the flap */
   border: 1px solid transparent;
   border-bottom: none;
   padding: 0 3.25rem;
@@ -83,14 +82,13 @@
   transform: translateY(0);
 }
 
-/* Stagger so it reads as unrolling rather than popping */
+/* Staggered reveal */
 .envelope.is-open .letter > *:nth-child(1) { transition-delay: 0.34s; }
 .envelope.is-open .letter > *:nth-child(2) { transition-delay: 0.42s; }
 .envelope.is-open .letter > *:nth-child(3) { transition-delay: 0.50s; }
 .envelope.is-open .letter > *:nth-child(4) { transition-delay: 0.58s; }
 .envelope.is-open .letter > *:nth-child(5) { transition-delay: 0.66s; }
 
-/* ── The envelope pocket ──────────────────────────────────────── */
 .env-pocket {
   position: absolute;
   left: 0;
@@ -105,7 +103,7 @@
   pointer-events: none;
 }
 
-/* The two diagonal folds on the pocket front */
+/* Diagonal folds on the pocket front */
 .env-pocket::before,
 .env-pocket::after {
   content: "";
@@ -126,20 +124,18 @@
   clip-path: polygon(100% 100%, 100% 8%, 0 100%);
 }
 
-/* ── The flap ─────────────────────────────────────────────────── */
-/* Hinged on the pocket's top edge, folded DOWN over the front when closed.
-   Its top edge sits at the pocket top (40 + 132 = 172px off the bottom). */
+/* Hinged at its top edge, which must land exactly on the pocket's top edge
+   (pocket bottom + pocket height). Resize the pocket and this moves with it. */
 .env-flap {
   position: absolute;
   left: 0;
   right: 0;
-  bottom: 96px;                    /* top edge lands on the pocket top: 40 + 176 */
+  bottom: 96px;                    /* 40 + 176 - 120 */
   height: 120px;
   transform-origin: top center;
   transform: rotateX(0deg);
   transform-style: preserve-3d;
-  /* Lighter than the pocket, with a shadow under the fold, so it reads
-     as a separate piece of paper rather than melting into the front. */
+  /* Lighter than the pocket plus a drop shadow, or the two shapes merge */
   background: linear-gradient(185deg, var(--env-flap-top), var(--env-flap-btm));
   clip-path: polygon(0 0, 100% 0, 50% 100%);
   filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.16));
@@ -151,14 +147,13 @@
   pointer-events: none;
 }
 
-/* Swings up and back, then settles behind the letter and dims */
+/* Swings back and drops behind the letter */
 .envelope.is-open .env-flap {
   transform: rotateX(-172deg);
   opacity: 0.55;
   z-index: 1;
 }
 
-/* ── The control ──────────────────────────────────────────────── */
 .env-button {
   position: absolute;
   inset: 0;
@@ -174,7 +169,7 @@
   justify-content: center;
 }
 
-/* Once open, only the hint strip stays clickable so the text is selectable */
+/* Shrinks to the pill when open so the letter text stays selectable */
 .envelope.is-open .env-button {
   inset: auto 0 0 0;
   height: 40px;
@@ -196,7 +191,6 @@
   transform: translateY(-2px);
 }
 
-/* ── Letter typography ────────────────────────────────────────── */
 .story-eyebrow {
   font-size: 0.78rem;
   font-weight: 600;
@@ -262,12 +256,11 @@
   }
 
   .env-flap {
-    bottom: 90px;                  /* 40 + 154 = 194 top edge */
+    bottom: 90px;                  /* 40 + 154 - 104 */
     height: 104px;
   }
 }
 
-/* Anyone asking for less motion just gets the letter, no theatre */
 @media (prefers-reduced-motion: reduce) {
   .letter-wrap,
   .letter,

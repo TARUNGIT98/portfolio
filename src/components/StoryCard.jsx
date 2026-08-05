@@ -7,10 +7,8 @@ const StoryCard = () => {
     return (
         <div className={open ? "envelope is-open" : "envelope"}>
 
-            {/* The flap — swings back on open */}
             <div className="env-flap" aria-hidden="true" />
 
-            {/* The letter slides up out of the pocket */}
             <div className="letter-wrap">
                 <div className="letter">
                     <p className="story-eyebrow">My Story</p>
@@ -29,7 +27,7 @@ const StoryCard = () => {
                         <p>
                             A master's at Dayton turned into teaching deep learning, and teaching
                             turned into building. Somewhere between NNs and open-source ML pipelines,
-                            I learned a thing or two about AI and I'm still catching up.
+                            I stopped treating AI as a subject and started using it as a tool.
                         </p>
                     </div>
 
@@ -47,11 +45,10 @@ const StoryCard = () => {
                 </div>
             </div>
 
-            {/* The pocket front — the letter emerges from behind this */}
             <div className="env-pocket" aria-hidden="true" />
 
-            {/* Closed, the envelope itself is the target; open, only the
-                close pill is, so the letter text stays selectable. */}
+            {/* Closed, the whole envelope is the hit area; open, the CSS shrinks
+                this to the pill so the letter text stays selectable. */}
             <button
                 className="env-button"
                 onClick={() => setOpen((o) => !o)}

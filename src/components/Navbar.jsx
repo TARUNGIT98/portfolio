@@ -47,7 +47,6 @@ const Navbar = () => {
             <span className="logo-last">sirapurapu</span>
           </a>
 
-          {/* Inline links — the desktop layout, untouched */}
           <div className="nav-links">
             {LINKS.map((l) => (
               <a key={l.href} href={l.href}>{l.label}</a>
@@ -58,7 +57,6 @@ const Navbar = () => {
         <div className="navbar-actions">
           <ResumeButton />
           <ThemeToggle />
-          {/* Hidden on desktop; only appears under 820px */}
           <button
             className="nav-burger"
             onClick={() => setMenuOpen((o) => !o)}
@@ -70,7 +68,7 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Drop-down panel — display:none above 820px */}
+      {/* display:none above 820px — see navbar.css */}
       <div className={menuOpen ? "nav-mobile open" : "nav-mobile"}>
         {LINKS.map((l) => (
           <a key={l.href} href={l.href} onClick={() => setMenuOpen(false)}>

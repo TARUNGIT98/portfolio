@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 
-/* Sequential mint ramp, light → dark as difficulty rises.
-   Validated: lightness band, chroma floor, and CVD separation all pass.
-   Every meter is text-labelled, so colour never carries identity alone. */
+/* Light → dark as difficulty rises. Each meter is also text-labelled, so
+   colour is never the only thing distinguishing them. */
 const DIFFICULTY_COLOR = {
     Easy: "var(--difficulty-1)",
     Medium: "var(--difficulty-2)",
@@ -39,8 +38,8 @@ const LeetCodeCard = ({ username }) => {
         let cancelled = false;
         const cacheKey = `leetcode:${username}`;
 
-        /* Show yesterday's numbers instantly, then refresh in the background.
-           These APIs are free-tier and can cold-start for several seconds. */
+        /* Paint the cached values first, then refetch. These endpoints are
+           free-tier and can cold-start for several seconds. */
         try {
             const cached = sessionStorage.getItem(cacheKey);
             if (cached) setStats(JSON.parse(cached));
@@ -63,7 +62,7 @@ const LeetCodeCard = ({ username }) => {
                     /* try the next endpoint */
                 }
             }
-            /* Only surface an error if we have nothing at all to show */
+            /* Only error out if the cache left us with nothing to render */
             if (!cancelled) {
                 setStats((current) => {
                     if (!current) setError("Couldn't reach LeetCode right now.");
@@ -75,8 +74,7 @@ const LeetCodeCard = ({ username }) => {
         return () => { cancelled = true; };
     }, [username]);
 
-    /* Bars are part-to-whole of what I've actually solved, so the width and the
-       number always tell the same story. */
+    /* Bar widths are a share of this total, so width and printed number agree */
     const solvedTotal = stats
         ? Math.max(stats.breakdown.reduce((n, d) => n + d.solved, 0), 1)
         : 1;

@@ -3,24 +3,22 @@ import CloudCutout from "../components/CloudCutout";
 import StoryCard from "../components/StoryCard";
 import "../styles/intro.css";
 
-/* Three.js is ~700kB — far and away the heaviest thing we ship. Loading it
-   lazily lets the page render and become interactive first; the sky fades in
-   a moment later over a plain gradient that matches its top colour. */
+/* Three.js is ~750kB. Lazy-loading it keeps the initial bundle at ~71kB and lets
+   the page become interactive first; .sky-band's CSS gradient stands in until
+   the chunk arrives. */
 const CloudSky = lazy(() => import("../components/CloudSky"));
 
 function Home() {
   return (
     <section id="home" style={{ position: "relative" }}>
 
-      {/* Sky band — hooked to the top. Height moved to CSS so it can respond
-          to screen size; identical 66vh on desktop. */}
+      {/* Height lives in intro.css so it can respond to screen size */}
       <div className="sky-band">
         <Suspense fallback={null}>
           <CloudSky />
         </Suspense>
 
-        {/* Just enough haze to soften where the sky meets the cloud tops —
-            the cutout below does the actual blending. */}
+        {/* Softens where sky meets cloud; CloudCutout does the actual blend */}
         <div style={{
           position: "absolute",
           left: 0,
@@ -32,25 +30,24 @@ function Home() {
           pointerEvents: "none"
         }} />
 
-        {/* Crisp cloud edge in the page colour */}
         <CloudCutout />
       </div>
 
-      {/* Intro on the left, story card on the right */}
       <div className="intro-section" id="about">
         <div className="intro-copy">
-          <p className="intro-eyebrow">Hello, This is</p>
+          <p className="intro-eyebrow">Software Developer · Machine Learning</p>
           <h1 className="intro-heading">
             Tarun <span className="accent">Sirapurapu</span>
           </h1>
           <p className="intro-text">
-            Developer at <strong>Reynolds &amp; Reynolds</strong>, building enterprise grade
-            web applications with React and TypeScript. Before this building telecom scale backend
-            systems at CGI, open-source ML pipelines, and a master's in computer science.
+            I build <strong>ML pipelines, deep learning systems, and production
+              full-stack applications</strong> — from multi-model training pipelines and
+            transformer-based NLP services to enterprise React and TypeScript running
+            at scale.
           </p>
           <p className="intro-aspiration">
-            I'm working toward the intersection of AI and product building intelligent,
-            scalable software that feels effortless to use.
+            MS in Computer Science. Taught deep learning as a TA at University of Dayton, shipped telecom-scale
+            backends at CGI, and now write intelligent systems that hold up in production.
           </p>
         </div>
 

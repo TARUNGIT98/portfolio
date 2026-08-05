@@ -1,7 +1,4 @@
-/* ─────────────────────────────────────────────────────────────
-   NeetCode has no public API — progress lives behind their auth,
-   so these are self-tracked. Update the numbers here.
-   ───────────────────────────────────────────────────────────── */
+/* NeetCode exposes no public API, so these are maintained by hand. */
 const LAST_UPDATED = "August 2026";
 const SOLVED = 51;
 const TOTAL = 75;
@@ -23,11 +20,10 @@ const ROADMAP = [
     { name: "2-D Dynamic Programming", solved: 0, of: 2 },
 ];
 
-/* How many categories to show before "+N more" */
+/* Categories rendered before the "+N more" note */
 const VISIBLE = 4;
-/* ───────────────────────────────────────────────────────────── */
 
-/* Same sequential mint ramp as the LeetCode card — deeper means further along. */
+/* Same ramp as LeetCodeCard: darker step = further along */
 const fillFor = (pct) =>
     pct >= 0.99
         ? "var(--difficulty-3)"

@@ -91,10 +91,49 @@
   margin-bottom: 0.9rem;
 }
 
+/* The technical decision — set apart so it doesn't read as more description */
+.project-decision {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-body);
+  border-left: 2px solid var(--tint-primary-ring);
+  padding-left: 0.8rem;
+  margin-bottom: 0.9rem;
+}
+
+.project-decision span {
+  display: block;
+  font-size: 0.66rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-mint);
+  margin-bottom: 0.25rem;
+}
+
 .project-tech {
   font-size: 0.85rem;
   font-weight: 500;
   color: var(--color-primary);
+}
+
+.project-links {
+  display: flex;
+  gap: 1.1rem;
+  margin-top: 0.9rem;
+  padding-top: 0.9rem;
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-links a {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--color-primary);
+  text-decoration: none;
+}
+
+.project-links a:hover {
+  text-decoration: underline;
 }
 
 /* Phones only — desktop grid is untouched */

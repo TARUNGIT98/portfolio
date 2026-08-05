@@ -9,7 +9,6 @@
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
 }
 
-/* soft indigo wash in the corner */
 .learning-card::before {
   content: "";
   position: absolute;
@@ -122,7 +121,6 @@
   }
 }
 
-/* Phones only */
 @media (max-width: 820px) {
   .learning-title {
     font-size: 1.35rem;

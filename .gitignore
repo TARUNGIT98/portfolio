@@ -26,3 +26,6 @@ dist
 
 # Playwright MCP artifacts
 .playwright-mcp
+
+# Local MCP config (dev tooling, not part of the site)
+.mcp.json

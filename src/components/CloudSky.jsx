@@ -3,7 +3,6 @@ import * as THREE from "three";
 import CLOUDS from "vanta/dist/vanta.clouds.min";
 import { useTheme } from "../context/ThemeContext";
 
-/* Soft dawn — pale blue sky, peach-tinted clouds, low warm sun */
 const DAY = {
     skyColor: 0x9dc6e0,
     cloudColor: 0xeed6d8,
@@ -13,15 +12,15 @@ const DAY = {
     sunlightColor: 0xffd9c0,
 };
 
-/* Moonlit night — the "sun" plays the moon, so it's a pale silver rather than
-   the muted grey it was; the clouds are lifted enough to catch that light. */
+/* Vanta always renders a sun; at night it stands in for the moon, so the sun
+   values are pale silver rather than warm. */
 const NIGHT = {
     skyColor: 0x1b2947,
     cloudColor: 0x55658c,
     cloudShadowColor: 0x131c33,
-    sunColor: 0xe4ebfa,        /* the moon itself — bright, faintly blue */
-    sunGlareColor: 0xa8bce4,   /* the halo around it */
-    sunlightColor: 0xc3d2ee,   /* what it washes across the cloud tops */
+    sunColor: 0xe4ebfa,
+    sunGlareColor: 0xa8bce4,
+    sunlightColor: 0xc3d2ee,
 };
 
 const CloudSky = () => {

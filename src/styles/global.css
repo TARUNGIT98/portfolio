@@ -1,25 +1,22 @@
-/* Global design tokens for this portfolio */
+/* Every colour, shadow and easing curve used anywhere in the app is declared
+   here. Component stylesheets read these and never hardcode a value, which is
+   what lets the dark block below re-theme the whole site. */
 :root {
-  /* Brand colors */
-  --color-primary: #5558fc;       /* indigo — work, links, accents */
-  --color-mint: #00704A;          /* starbucks green — time periods, education */
+  --color-primary: #5558fc;
+  --color-mint: #00704A;
   --color-muted: #6B7280;
 
-  /* Tinted surfaces (derived from the brand colors) */
   --tint-primary: rgba(85, 88, 252, 0.08);
   --tint-primary-ring: rgba(85, 88, 252, 0.25);
   --tint-mint: rgba(0, 112, 74, 0.09);
 
-  /* Backgrounds */
   --bg-primary: #FAFAF7;
   --bg-card: #FFFFFF;
   --bg-paper: #FDFCF9;
 
-  /* Text */
   --text-primary: #1A1A2E;
   --text-body: #3A3A4E;
 
-  /* Borders & shadows */
   --border-subtle: rgba(0, 0, 0, 0.06);
   --border-soft: rgba(0, 0, 0, 0.12);
   --shadow-lift: 0 20px 44px rgba(0, 0, 0, 0.11);
@@ -28,24 +25,19 @@
     0 12px 32px rgba(0, 0, 0, 0.06),
     0 32px 64px rgba(0, 0, 0, 0.04);
 
-  /* Motion */
   --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
-
-  /* Typography */
   --font-body: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
 
-  /* Border radius */
   --radius-lg: 1rem;
   --radius-xl: 1.25rem;
 
-  /* Meter ramp — light mode */
   --meter-track: rgba(0, 0, 0, 0.06);
   --difficulty-1: #54BF93;
   --difficulty-2: #189070;
   --difficulty-3: #00704A;
 
   --navbar-blur-bg: rgba(250, 250, 247, 0.72);
-  /* Stands in for the WebGL sky until it loads */
+  /* Stands in for the WebGL sky until that chunk loads */
   --sky-fallback: linear-gradient(to bottom, #9dc6e0 0%, #cfd9e2 70%, #FAFAF7 100%);
   --hero-haze: linear-gradient(to bottom,
     rgba(250, 250, 247, 0) 0%,
@@ -55,9 +47,8 @@
   color-scheme: light;
 }
 
-/* ── Dark theme ───────────────────────────────────────────────
-   Only the tokens change; no component stylesheet knows about
-   the theme. Brand hues are lifted so they stay legible on dark. */
+/* Brand hues are re-picked rather than reused — the light-mode indigo and green
+   both fail contrast on a dark surface. */
 :root[data-theme="dark"] {
   --color-primary: #8b8dff;
   --color-mint: #4dd4a0;
@@ -97,7 +88,7 @@
   color-scheme: dark;
 }
 
-/* Theme swap shouldn't flash — but respect reduced-motion users */
+/* Smooths the token swap when the theme toggles */
 body,
 .navbar,
 .project-card,
@@ -145,7 +136,6 @@ section[id] {
   scroll-margin-top: 6rem;
 }
 
-/* Shared section heading */
 .section-heading {
   font-size: 2rem;
   font-weight: 600;
@@ -153,14 +143,13 @@ section[id] {
   margin-bottom: 2.5rem;
 }
 
-/* One page gutter, defined once */
+/* Shared page gutter — change the width here and every section follows */
 .section-shell {
   max-width: 1100px;
   margin: 0 auto;
   padding: 4rem 2rem;
 }
 
-/* ── Phones only. Above 820px none of this applies. ── */
 @media (max-width: 820px) {
   .section-shell {
     padding: 2.75rem 1.25rem;
@@ -185,7 +174,7 @@ section[id] {
   .tab { flex: none; }
 }
 
-/* The card recipe every section shares — hover behaviour lives here only */
+/* Shared card surface and hover — used by every section's cards */
 .surface-card {
   background: var(--bg-card);
   border: 1px solid var(--border-subtle);

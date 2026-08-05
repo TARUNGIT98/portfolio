@@ -1,8 +1,6 @@
-/* A cloud silhouette filled with the exact page background colour.
-   This is what gives the hero a crisp, intentional edge instead of a
-   gradient smear — the sky simply stops where the cloud begins. */
-
-/* Reads the live token, so the cutout still matches the page in dark mode. */
+/* Cloud silhouette filled with the page background, so the sky ends on a shape
+   edge rather than a gradient fade. Reads the live token so it still matches
+   the page in dark mode. */
 const PAGE = "var(--bg-primary)";
 
 const CloudCutout = () => {
@@ -13,7 +11,7 @@ const CloudCutout = () => {
             preserveAspectRatio="none"
             xmlns="http://www.w3.org/2000/svg"
         >
-            {/* Back puffs — a translucent hint of depth behind the solid edge */}
+            {/* Back layer, translucent for depth */}
             <path
                 d="M-20 260 L-20 168
                    C 70 168, 78 104, 168 104
@@ -29,7 +27,7 @@ const CloudCutout = () => {
                 opacity="0.45"
             />
 
-            {/* Front silhouette — solid page colour, the actual edge */}
+            {/* Front layer, opaque — this is the visible edge */}
             <path
                 d="M-20 260 L-20 206
                    C 60 206, 74 150, 156 150
