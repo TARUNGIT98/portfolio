@@ -33,6 +33,7 @@ const ResumeButton = () => {
                     download="SaiTarunSirapurapu_Resume.pdf"
                     aria-label="Download my resume"
                     onClick={playAnimation}
+                    target="_blank"
                 >
                     <div className="ms-content">
                         <div className="ms-content-inside">

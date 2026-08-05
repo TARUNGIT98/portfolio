@@ -13,14 +13,15 @@ const DAY = {
     sunlightColor: 0xffd9c0,
 };
 
-/* Night — deep blue sky, cool clouds, a muted moon instead of a sun */
+/* Moonlit night — the "sun" plays the moon, so it's a pale silver rather than
+   the muted grey it was; the clouds are lifted enough to catch that light. */
 const NIGHT = {
-    skyColor: 0x111a2e,
-    cloudColor: 0x2a3350,
-    cloudShadowColor: 0x080c18,
-    sunColor: 0x5b6a92,
-    sunGlareColor: 0x3d4a6b,
-    sunlightColor: 0x6d7ca6,
+    skyColor: 0x1b2947,
+    cloudColor: 0x55658c,
+    cloudShadowColor: 0x131c33,
+    sunColor: 0xe4ebfa,        /* the moon itself — bright, faintly blue */
+    sunGlareColor: 0xa8bce4,   /* the halo around it */
+    sunlightColor: 0xc3d2ee,   /* what it washes across the cloud tops */
 };
 
 const CloudSky = () => {

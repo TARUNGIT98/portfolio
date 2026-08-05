@@ -88,7 +88,7 @@
   --difficulty-3: #1f9a70;
 
   --navbar-blur-bg: rgba(18, 19, 26, 0.72);
-  --sky-fallback: linear-gradient(to bottom, #111a2e 0%, #14161f 70%, #12131a 100%);
+  --sky-fallback: linear-gradient(to bottom, #1b2947 0%, #171a26 70%, #12131a 100%);
   --hero-haze: linear-gradient(to bottom,
     rgba(18, 19, 26, 0) 0%,
     rgba(18, 19, 26, 0.18) 60%,
