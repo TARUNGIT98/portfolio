@@ -53,7 +53,7 @@ const NeetCodeCard = () => {
                 <span className="dsa-hero-suffix">of {TOTAL} completed</span>
             </div>
             <p className="dsa-hero-label">
-                {completed} categories fully cleared · strongest first
+                {completed} categories fully cleared
             </p>
 
             <div className="dsa-meters">
