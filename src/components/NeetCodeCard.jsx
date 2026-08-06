@@ -1,6 +1,6 @@
 /* NeetCode exposes no public API, so these are maintained by hand. */
 const LAST_UPDATED = "August 2026";
-const SOLVED = 51;
+const SOLVED = 52;
 const TOTAL = 75;
 
 const ROADMAP = [
@@ -98,7 +98,7 @@ const NeetCodeCard = () => {
                     target="_blank"
                     rel="noopener noreferrer"
                 >
-                    See the roadmap →
+                    See the roadmap
                 </a>
             </div>
         </div>
