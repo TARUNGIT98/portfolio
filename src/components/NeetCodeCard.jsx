@@ -1,7 +1,8 @@
 /* NeetCode exposes no public API, so these are maintained by hand. */
-const LAST_UPDATED = "August 2026";
-const SOLVED = 52;
-const TOTAL = 75;
+const
+    LAST_UPDATED = "August 2026",
+    SOLVED = 58,
+    TOTAL = 75;
 
 const ROADMAP = [
     { name: "Arrays & Hashing", solved: 8, of: 8 },
