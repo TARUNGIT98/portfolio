@@ -75,7 +75,7 @@ function CareerPath() {
 
             <div className="career-track" ref={trackRef} onScroll={updateArrows}>
                 {timeline.map((item) => (
-                    <div key={item.range + item.title} className="career-card">
+                    <div key={item.range + item.title} className="surface-card career-card">
                         <div className="career-meta">
                             <span className="career-range">{item.range}</span>
                             <span className={`career-badge ${item.kind}`}>

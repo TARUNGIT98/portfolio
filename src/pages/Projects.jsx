@@ -43,10 +43,12 @@ const PROJECTS = [
     tags: ["ai"]
   },
   {
-    /* TODO: real blurb, stack, and links once Alfred is public */
     title: "Alfred",
-    description: "My latest build — currently in progress.",
-    tech: "",
+    description:
+      "A local macOS companion that runs a 120-day AI/ML study plan — spoken morning briefings, evening check-ins that track a GitHub streak, and a watcher that reads the frontmost window during focus hours and calls out the drift to Netflix or Shorts.",
+    decision:
+      "Reads the active app and browser tab through osascript rather than a browser extension, so one code path covers Chrome, Safari, Arc and Brave with nothing to install; the Claude calls degrade to scripted lines when no API key is set, so it still runs fully offline.",
+    tech: "Python, Claude API, AppleScript, launchd",
     image: null,
     badge: "Latest",
     link: null,
@@ -104,7 +106,7 @@ function Projects() {
             : <div className="project-placeholder"><span>{project.title}</span></div>;
 
           return (
-            <div key={project.title} className="project-card">
+            <div key={project.title} className="surface-card project-card">
               {project.link
                 ? <a href={project.link} target="_blank" rel="noopener noreferrer">{thumb}</a>
                 : thumb}

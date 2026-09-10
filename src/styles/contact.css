@@ -54,23 +54,6 @@
   transform: translateX(4px);
 }
 
-.contact-alt {
-  margin-top: 1.25rem;
-  font-size: 0.85rem;
-  color: var(--color-muted);
-}
-
-.contact-alt a {
-  color: var(--color-muted);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-  transition: color 0.2s ease;
-}
-
-.contact-alt a:hover {
-  color: var(--color-primary);
-}
-
 @media (prefers-reduced-motion: reduce) {
   .contact-button,
   .contact-button .arrow {

@@ -80,7 +80,7 @@ const LeetCodeCard = ({ username }) => {
         : 1;
 
     return (
-        <div className="dsa-card">
+        <div className="surface-card dsa-card">
             <div className="dsa-card-head">
                 <span className="dsa-card-title">LeetCode</span>
                 <span className={`dsa-status ${stats ? "live" : "static"}`}>

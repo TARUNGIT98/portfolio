@@ -164,7 +164,7 @@ function Skills() {
         {shown.map((skill) => (
           <a
             key={skill.name}
-            className="skill-card"
+            className="surface-card skill-card"
             href={skill.docs}
             target="_blank"
             rel="noopener noreferrer"

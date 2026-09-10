@@ -1,25 +1,30 @@
-/* NeetCode exposes no public API, so these are maintained by hand. */
-const
-    LAST_UPDATED = "August 2026",
-    SOLVED = 58,
-    TOTAL = 75;
+/* NeetCode exposes no public API, so this list is maintained by hand.
+   The headline figures are derived from it, so they can't drift out of sync. */
+const LAST_UPDATED = "September 2026";
 
 const ROADMAP = [
     { name: "Arrays & Hashing", solved: 8, of: 8 },
-    { name: "1-D Dynamic Programming", solved: 8, of: 10 },
-    { name: "Trees", solved: 6, of: 11 },
-    { name: "Linked List", solved: 5, of: 6 },
-    { name: "Sliding Window", solved: 3, of: 4 },
     { name: "Two Pointers", solved: 3, of: 3 },
-    { name: "Binary Search", solved: 2, of: 2 },
-    { name: "Backtracking", solved: 2, of: 2 },
-    { name: "Graphs", solved: 2, of: 6 },
+    { name: "Sliding Window", solved: 4, of: 4 },
     { name: "Stack", solved: 1, of: 1 },
-    { name: "Tries", solved: 0, of: 3 },
+    { name: "Binary Search", solved: 2, of: 2 },
+    { name: "Linked List", solved: 5, of: 6 },
+    { name: "Trees", solved: 9, of: 11 },
     { name: "Heap / Priority Queue", solved: 0, of: 1 },
+    { name: "Backtracking", solved: 2, of: 2 },
+    { name: "Tries", solved: 0, of: 3 },
+    { name: "Graphs", solved: 2, of: 6 },
     { name: "Advanced Graphs", solved: 0, of: 1 },
+    { name: "1-D Dynamic Programming", solved: 8, of: 10 },
     { name: "2-D Dynamic Programming", solved: 0, of: 2 },
+    { name: "Greedy", solved: 2, of: 2 },
+    { name: "Intervals", solved: 5, of: 5 },
+    { name: "Math & Geometry", solved: 3, of: 3 },
+    { name: "Bit Manipulation", solved: 5, of: 5 },
 ];
+
+const SOLVED = ROADMAP.reduce((n, c) => n + c.solved, 0);
+const TOTAL = ROADMAP.reduce((n, c) => n + c.of, 0);
 
 /* Categories rendered before the "+N more" note */
 const VISIBLE = 4;
@@ -40,7 +45,7 @@ const NeetCodeCard = () => {
     const completed = ROADMAP.filter((c) => c.solved === c.of).length;
 
     return (
-        <div className="dsa-card">
+        <div className="surface-card dsa-card">
             <div className="dsa-card-head">
                 <span className="dsa-card-title">Blind 75</span>
                 <span className="dsa-status static">
