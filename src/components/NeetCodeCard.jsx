@@ -1,6 +1,6 @@
 /* NeetCode exposes no public API, so this list is maintained by hand.
    The headline figures are derived from it, so they can't drift out of sync. */
-const LAST_UPDATED = "September 2026";
+const LAST_UPDATED = "October 2026";
 
 const ROADMAP = [
     { name: "Arrays & Hashing", solved: 8, of: 8 },
@@ -12,8 +12,8 @@ const ROADMAP = [
     { name: "Trees", solved: 9, of: 11 },
     { name: "Heap / Priority Queue", solved: 0, of: 1 },
     { name: "Backtracking", solved: 2, of: 2 },
-    { name: "Tries", solved: 0, of: 3 },
-    { name: "Graphs", solved: 2, of: 6 },
+    { name: "Tries", solved: 3, of: 3 },
+    { name: "Graphs", solved: 4, of: 6 },
     { name: "Advanced Graphs", solved: 0, of: 1 },
     { name: "1-D Dynamic Programming", solved: 8, of: 10 },
     { name: "2-D Dynamic Programming", solved: 0, of: 2 },
@@ -26,8 +26,13 @@ const ROADMAP = [
 const SOLVED = ROADMAP.reduce((n, c) => n + c.solved, 0);
 const TOTAL = ROADMAP.reduce((n, c) => n + c.of, 0);
 
-/* Categories rendered before the "+N more" note */
-const VISIBLE = 4;
+/* Categories rendered as bars, in order; the rest fall under "+N more" */
+const FEATURED = [
+    "Arrays & Hashing",
+    "Intervals",
+    "Sliding Window",
+    "1-D Dynamic Programming",
+];
 
 /* Same ramp as LeetCodeCard: darker step = further along */
 const fillFor = (pct) =>
@@ -38,10 +43,7 @@ const fillFor = (pct) =>
             : "var(--difficulty-1)";
 
 const NeetCodeCard = () => {
-    const ranked = [...ROADMAP].sort(
-        (a, b) => b.solved / b.of - a.solved / a.of || b.of - a.of
-    );
-    const shown = ranked.slice(0, VISIBLE);
+    const shown = FEATURED.map((name) => ROADMAP.find((c) => c.name === name));
     const completed = ROADMAP.filter((c) => c.solved === c.of).length;
 
     return (
@@ -96,7 +98,7 @@ const NeetCodeCard = () => {
 
             <div className="dsa-foot">
                 <span className="dsa-note">
-                    +{ROADMAP.length - VISIBLE} more · updated {LAST_UPDATED}
+                    +{ROADMAP.length - shown.length} more · updated {LAST_UPDATED}
                 </span>
                 <a
                     className="dsa-link"
