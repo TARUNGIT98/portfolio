@@ -1,6 +1,6 @@
 import { useRef } from "react";
 import "../styles/resumebutton.css"
-import resumePdf from "../assets/TarunSirapurapuResume26.pdf";
+import resumePdf from "../assets/SaiTarunSirapurapu_Resume.pdf";
 
 const ResumeButton = () => {
     const boxRef = useRef(null);
