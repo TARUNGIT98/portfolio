@@ -13,7 +13,7 @@ const ROADMAP = [
     { name: "Heap / Priority Queue", solved: 0, of: 1 },
     { name: "Backtracking", solved: 2, of: 2 },
     { name: "Tries", solved: 3, of: 3 },
-    { name: "Graphs", solved: 4, of: 6 },
+    { name: "Graphs", solved: 6, of: 6 },
     { name: "Advanced Graphs", solved: 0, of: 1 },
     { name: "1-D Dynamic Programming", solved: 8, of: 10 },
     { name: "2-D Dynamic Programming", solved: 0, of: 2 },
