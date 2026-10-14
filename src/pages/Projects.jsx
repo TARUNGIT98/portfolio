@@ -71,7 +71,7 @@ const PROJECTS = [
       "Price prediction on Bangalore housing data — feature engineering and outlier handling, served from a pickled model behind a Flask API with a React front end on AWS EC2.",
     tech: "Python, pandas, scikit-learn, Flask, React, AWS, Nginx",
     image: reaImage,
-    link: "http://ec2-18-116-72-123.us-east-2.compute.amazonaws.com/",
+    link: null, // demo offline until redeployed
     repo: "https://github.com/TARUNGIT98/RealEstateAnalysis",
     tags: ["ai", "web"]
   }

@@ -8,7 +8,7 @@ function Contact() {
     <section id="contact" className="section-shell contact-section">
       <h2 className="contact-heading">Let's build something</h2>
       <p className="contact-text">
-        Got an idea, a opportunity, or just want to talk ? My inbox is open.
+        Got an idea, an opportunity, or just want to talk? My inbox is open.
       </p>
 
       <a

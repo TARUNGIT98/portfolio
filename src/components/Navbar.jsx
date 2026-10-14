@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import "../styles/navbar.css";
-import ResumeButton from "./ResumeButton";
 import ThemeToggle from "./ThemeToggle";
 
 const LINKS = [
@@ -55,7 +54,14 @@ const Navbar = () => {
         </div>
 
         <div className="navbar-actions">
-          <ResumeButton />
+          <a
+            className="nav-resume"
+            href="/SaiTarunSirapurapu_Resume.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Resume
+          </a>
           <ThemeToggle />
           <button
             className="nav-burger"

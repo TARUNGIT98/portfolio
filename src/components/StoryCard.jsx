@@ -16,7 +16,7 @@ const StoryCard = () => {
                     <div className="story-block">
                         <h3>How I got here</h3>
                         <p>
-                            I started out in electronics was pulled into the world of developement through sheer interest. Four years
+                            I started out in electronics and was pulled into the world of development through sheer interest. Four years
                             later I was at <strong>CGI</strong> writing telecom billing systems in
                             Java.
                         </p>
@@ -32,7 +32,7 @@ const StoryCard = () => {
                     </div>
 
                     <div className="story-block">
-                        <h3>What am I seeking</h3>
+                        <h3>What I'm seeking</h3>
                         <p>
                             Now I build enterprise front-ends by day and intelligent systems by night.
                             The goal is to build products that use the intelligent systems at hand to their fullest.

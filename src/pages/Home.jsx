@@ -35,7 +35,7 @@ function Home() {
 
       <div className="intro-section" id="about">
         <div className="intro-copy">
-          <p className="intro-eyebrow">Software Developer · Machine Learning</p>
+          <p className="intro-eyebrow">Software Engineer · Machine Learning</p>
           <h1 className="intro-heading">
             Tarun <span className="accent">Sirapurapu</span>
           </h1>
@@ -49,6 +49,14 @@ function Home() {
             MS in Computer Science. Taught deep learning as a TA at University of Dayton, shipped telecom-scale
             backends at CGI, and now write intelligent systems that hold up in production.
           </p>
+          <p className="intro-status">
+            <span className="status-dot" aria-hidden="true" />
+            Open to Full-stack and ML Engineering roles · US-based
+          </p>
+          <div className="intro-actions">
+            <a className="intro-btn primary" href="#projects">View projects</a>
+            <a className="intro-btn" href="#contact">Get in touch</a>
+          </div>
         </div>
 
         <StoryCard />

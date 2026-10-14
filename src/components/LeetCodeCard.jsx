@@ -21,7 +21,6 @@ const normalise = (json) => {
     if (!total && !easy && !medium && !hard) return null;
     return {
         total,
-        ranking: json.ranking ?? null,
         breakdown: [
             { name: "Easy", solved: easy, of: json.totalEasy ?? null },
             { name: "Medium", solved: medium, of: json.totalMedium ?? null },
@@ -106,9 +105,7 @@ const LeetCodeCard = ({ username }) => {
                         <span className="dsa-hero-suffix">problems solved</span>
                     </div>
                     <p className="dsa-hero-label">
-                        {stats.ranking
-                            ? `Global rank #${stats.ranking.toLocaleString()} · by difficulty below`
-                            : "Broken down by difficulty below"}
+                        Broken down by difficulty below
                     </p>
 
                     <div className="dsa-meters">
