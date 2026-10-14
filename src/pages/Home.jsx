@@ -41,7 +41,7 @@ function Home() {
           </h1>
           <p className="intro-text">
             I build <strong>ML pipelines, deep learning systems, and production
-              full-stack applications</strong> — from multi-model training pipelines and
+              full-stack applications</strong> from multi-model training pipelines and
             transformer-based NLP services to enterprise React and TypeScript running
             at scale.
           </p>

@@ -43,7 +43,7 @@ const Navbar = () => {
 
         <div className="navbar-left">
           <a className="logo" href="/">
-            <span className="logo-first">tarun</span>
+            <span className="logo-first">Tarun</span>
             <span className="logo-last">sirapurapu</span>
           </a>
 
