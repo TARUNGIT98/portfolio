@@ -1,7 +1,7 @@
-/* careerpath.css — horizontal carousel */
+/* careerpath.css — vertical timeline */
 .career-header {
   text-align: center;
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
 .career-header .section-heading {
@@ -13,48 +13,84 @@
   color: var(--color-muted);
 }
 
-.career-track {
+/* Three columns: date | rail | content. The rail line runs down the middle
+   column; each dot sits on it. */
+.timeline {
+  --rail-x: 200px;               /* width of the date column */
+  position: relative;
+  list-style: none;
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0.5rem;
+  bottom: 0.5rem;
+  left: calc(var(--rail-x) + 1.5rem + 11px);   /* date column + gap + half the 24px dot column, minus half the line */
+  width: 2px;
+  border-radius: 2px;
+  background: linear-gradient(
+    to bottom,
+    var(--color-primary) 0%,
+    var(--tint-primary-ring) 55%,
+    transparent 100%
+  );
+}
+
+.timeline-item {
+  display: grid;
+  grid-template-columns: var(--rail-x) 24px 1fr;
+  column-gap: 1.5rem;
+  padding-bottom: 2.5rem;
+}
+
+.timeline-item:last-child {
+  padding-bottom: 0;
+}
+
+.timeline-when {
   display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
-  padding: 1rem 0.5rem 2rem;
-  scrollbar-width: none;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+  padding-top: 0.15rem;
+  text-align: right;
 }
 
-.career-track::-webkit-scrollbar {
-  display: none;
+.timeline-dot {
+  position: relative;
+  justify-self: center;
+  margin-top: 0.3rem;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background: var(--bg-primary);
+  border: 2px solid var(--color-primary);
+  box-shadow: 0 0 0 4px var(--bg-primary);
 }
 
-.career-card {
-  flex: 0 0 300px;
-  scroll-snap-align: center;
-  border-radius: var(--radius-xl);
-  padding: 1.75rem 1.5rem;
+.timeline-item.education .timeline-dot {
+  border-color: var(--color-mint);
 }
 
-.career-card:hover {
-  transform: translateY(-10px) scale(1.03);
-}
-
-.career-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  margin-bottom: 0.7rem;
-  flex-wrap: wrap;
+/* The current role gets a filled dot */
+.timeline-item:first-child .timeline-dot {
+  background: var(--color-primary);
 }
 
 .career-range {
-  font-size: 0.82rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: var(--color-mint);
   letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 .career-badge {
-  font-size: 0.65rem;
+  font-size: 0.62rem;
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -72,75 +108,87 @@
   background: var(--tint-mint);
 }
 
-.career-card h3 {
-  font-size: 1.08rem;
+.timeline-body h3 {
+  font-size: 1.15rem;
   font-weight: 600;
   line-height: 1.35;
-  margin-bottom: 0.45rem;
+  margin-bottom: 0.25rem;
 }
 
 .career-place {
-  font-size: 0.92rem;
+  font-size: 0.95rem;
   font-weight: 500;
   color: var(--text-primary);
 }
 
 .career-location {
-  font-size: 0.82rem;
+  font-weight: 400;
   color: var(--color-muted);
-  margin-top: 0.15rem;
 }
 
-.career-controls {
-  display: flex;
-  justify-content: center;
-  gap: 0.75rem;
-}
-
-.career-arrow {
-  width: 42px;
-  height: 42px;
-  border-radius: 50%;
-  border: 1px solid var(--border-soft);
-  background: var(--bg-card);
-  color: var(--text-primary);
-  font-size: 1.1rem;
-  line-height: 1;
-  cursor: pointer;
+.timeline-highlights {
+  list-style: none;
+  margin: 0.85rem 0 0;
+  padding: 0;
   display: grid;
-  place-items: center;
-  transition:
-    background 0.25s ease,
-    border-color 0.25s ease,
-    color 0.25s ease,
-    transform 0.35s var(--ease-bounce);
+  gap: 0.55rem;
 }
 
-.career-arrow:hover:not(:disabled) {
-  background: var(--color-mint);
-  border-color: var(--color-mint);
-  color: #fff;
-  transform: scale(1.12);
+.timeline-highlights li {
+  position: relative;
+  padding-left: 1.1rem;
+  font-size: 0.95rem;
+  line-height: 1.65;
+  color: var(--text-body);
 }
 
-.career-arrow:active:not(:disabled) {
-  transform: scale(0.95);
+.timeline-highlights li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 6px;
+  height: 2px;
+  border-radius: 1px;
+  background: var(--color-primary);
+  opacity: 0.6;
 }
 
-.career-arrow:disabled {
-  opacity: 0.28;
-  cursor: default;
-}
-
-@media (max-width: 600px) {
-  .career-card {
-    flex-basis: 265px;
+/* Phones: the date moves above the content and the rail sits at the left edge */
+@media (max-width: 720px) {
+  .timeline {
+    --rail-x: 0px;
   }
-}
 
-/* Narrower than the viewport so the next card stays partly visible */
-@media (max-width: 820px) {
-  .career-card {
-    flex: 0 0 260px;
+  .timeline::before {
+    left: 6px;
+  }
+
+  .timeline-item {
+    grid-template-columns: 14px 1fr;
+    grid-template-areas:
+      "dot when"
+      ".   body";
+    column-gap: 1rem;
+    padding-bottom: 2rem;
+  }
+
+  .timeline-dot {
+    grid-area: dot;
+    margin-top: 0.2rem;
+  }
+
+  .timeline-when {
+    grid-area: when;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    text-align: left;
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-body {
+    grid-area: body;
   }
 }
