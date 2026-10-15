@@ -6,14 +6,22 @@
   --env-fold: #DCD3C0;      /* the diagonal folds */
   --env-flap-top: #F2EDE2;  /* flap catches the light */
   --env-flap-btm: #E0D8C6;
+
+  /* Paper texture: fine grain plus faint directional fibres, both tiled noise */
+  --paper-grain: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.32 0 0 0 0 0.27 0 0 0 0 0.2 0.22 0 0 0 -0.04'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  --paper-fiber: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='320' height='320'%3E%3Cfilter id='f'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.012 0.35' numOctaves='2' seed='7' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.35 0 0 0 0 0.3 0 0 0 0 0.24 0.07 0 0 0 -0.02'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23f)'/%3E%3C/svg%3E");
+  --paper-grain-soft: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='s'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0.32 0 0 0 0 0.27 0 0 0 0 0.2 0.13 0 0 0 -0.03'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23s)'/%3E%3C/svg%3E");
+  --paper-texture: var(--paper-grain), var(--paper-fiber);
+  --paper-texture-size: 180px 180px, 320px 320px;
 }
 
 :root[data-theme="dark"] {
-  --env-face: #262936;
-  --env-shade: #1d1f29;
-  --env-fold: #22252f;
-  --env-flap-top: #333747;
-  --env-flap-btm: #272b38;
+  /* Lifted well clear of --bg-primary so the closed envelope doesn't read as an empty box */
+  --env-face: #3a3f57;
+  --env-shade: #2f3348;
+  --env-fold: #353a51;
+  --env-flap-top: #4d5375;
+  --env-flap-btm: #3e4361;
 }
 
 .envelope {
@@ -24,8 +32,22 @@
   min-height: 350px;               /* flap + pocket + hint */
   perspective: 1400px;
   transition: min-height 0.6s cubic-bezier(0.22, 1, 0.36, 1),
-              padding-bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+              padding-bottom 0.6s cubic-bezier(0.22, 1, 0.36, 1),
+              transform 0.45s var(--ease-bounce);
 }
+
+/* Closed + hovered: the envelope tilts and the flap lifts a little, so it
+   reads as something to open rather than a picture of one. */
+.envelope:not(.is-open):hover,
+.envelope:not(.is-open):focus-within {
+  transform: translateY(-4px) rotate(-1.5deg);
+}
+
+.envelope:not(.is-open):hover .env-flap,
+.envelope:not(.is-open):focus-within .env-flap {
+  transform: rotateX(-32deg);
+}
+
 
 /* Open: the letter drives the height. Padding must clear the pocket
    (bottom + height) plus the hint strip below it. */
@@ -53,8 +75,9 @@
   min-height: 0;                   /* required for the grid trick to collapse */
   border-radius: 20px 20px 4px 4px;
   background-color: var(--bg-paper);
-  background-image: radial-gradient(rgba(26, 26, 46, 0.09) 1px, transparent 1px);
-  background-size: 22px 22px;
+  background-image: var(--paper-grain-soft);
+  background-size: 180px 180px;
+  background-clip: padding-box;    /* collapsed, only the 1px border remains — keep paint off it */
   /* Transparent while collapsed, or a hairline shows above the flap */
   border: 1px solid transparent;
   border-bottom: none;
@@ -95,10 +118,19 @@
   right: 0;
   bottom: 40px;
   height: 176px;
-  border-radius: 6px 6px 16px 16px;
-  background: linear-gradient(170deg, var(--env-face) 0%, var(--env-shade) 100%);
-  border: 1px solid var(--border-subtle);
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.10);
+  border-radius: 3px 3px 14px 14px;
+  overflow: hidden;                /* trims the fold triangles to the rounded corners */
+  background:
+    var(--paper-texture),
+    linear-gradient(170deg, var(--env-face) 0%, var(--env-shade) 100%);
+  background-size: var(--paper-texture-size), 100% 100%;
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  /* Thin paper edge, a close contact shadow, then a soft lift */
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.35),
+    0 1px 1px rgba(0, 0, 0, 0.08),
+    0 4px 8px rgba(0, 0, 0, 0.06),
+    0 18px 32px -12px rgba(0, 0, 0, 0.22);
   z-index: 3;
   pointer-events: none;
 }
@@ -111,17 +143,28 @@
   bottom: 0;
   width: 58%;
   height: 100%;
-  background: var(--env-fold);
+  background-size: var(--paper-texture-size), 100% 100%;
 }
 
 .env-pocket::before {
   left: 0;
   clip-path: polygon(0 100%, 0 8%, 100% 100%);
+  background-image:
+    var(--paper-texture),
+    linear-gradient(200deg, rgba(255, 255, 255, 0.22) 0%, transparent 55%),
+    linear-gradient(var(--env-fold), var(--env-fold));
+  background-size: var(--paper-texture-size), 100% 100%, 100% 100%;
 }
 
+/* The right fold faces away from the light */
 .env-pocket::after {
   right: 0;
   clip-path: polygon(100% 100%, 100% 8%, 0 100%);
+  background-image:
+    var(--paper-texture),
+    linear-gradient(160deg, rgba(0, 0, 0, 0.07) 0%, transparent 60%),
+    linear-gradient(var(--env-fold), var(--env-fold));
+  background-size: var(--paper-texture-size), 100% 100%, 100% 100%;
 }
 
 /* Hinged at its top edge, which must land exactly on the pocket's top edge
@@ -136,9 +179,12 @@
   transform: rotateX(0deg);
   transform-style: preserve-3d;
   /* Lighter than the pocket plus a drop shadow, or the two shapes merge */
-  background: linear-gradient(185deg, var(--env-flap-top), var(--env-flap-btm));
+  background:
+    var(--paper-texture),
+    radial-gradient(ellipse 70% 90% at 30% 0%, rgba(255, 255, 255, 0.18), transparent 70%),
+    linear-gradient(185deg, var(--env-flap-top), var(--env-flap-btm));
+  background-size: var(--paper-texture-size), 100% 100%, 100% 100%;
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-  filter: drop-shadow(0 3px 4px rgba(0, 0, 0, 0.16));
   z-index: 4;
   transition:
     transform 0.6s cubic-bezier(0.4, 0, 0.2, 1),
@@ -147,11 +193,70 @@
   pointer-events: none;
 }
 
+/* Shadow the flap casts on the pocket. Blur lives on the wrapper because a
+   clip-path would clip a filter on the same element. */
+.env-flap-shadow {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 92px;                    /* 4px below the flap */
+  height: 120px;
+  filter: blur(3px);
+  z-index: 3;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+.env-flap-shadow span {
+  display: block;
+  height: 100%;
+  background: rgba(40, 25, 5, 0.2);
+  clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.envelope.is-open .env-flap-shadow,
+.envelope:not(.is-open):hover .env-flap-shadow {
+  opacity: 0;
+}
+
 /* Swings back and drops behind the letter */
 .envelope.is-open .env-flap {
   transform: rotateX(-172deg);
   opacity: 0.55;
   z-index: 1;
+}
+
+/* Red wax seal centred on the flap tip: flap bottom (96px) minus half the
+   seal. Outside the flap because the flap's clip-path would cut it off. */
+.env-seal {
+  position: absolute;
+  left: calc(50% - 27px);
+  bottom: 69px;
+  width: 54px;
+  height: 54px;
+  overflow: visible;
+  /* Tight to the paper: wax sits on it, it doesn't float */
+  filter: drop-shadow(0 1px 0.5px rgba(50, 0, 0, 0.45)) drop-shadow(0 2px 3px rgba(0, 0, 0, 0.16));
+  z-index: 4;
+  pointer-events: none;
+  transition: transform 0.45s var(--ease-bounce), opacity 0.25s ease;
+}
+
+/* Fill and relief come from the three stacked <text> layers in StoryCard */
+.env-seal-letter {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.envelope:not(.is-open):hover .env-seal,
+.envelope:not(.is-open):focus-within .env-seal {
+  transform: translateY(-14px) rotate(-8deg);
+}
+
+.envelope.is-open .env-seal {
+  opacity: 0;
+  transform: scale(0.6);
 }
 
 .env-button {
@@ -259,6 +364,18 @@
     bottom: 90px;                  /* 40 + 154 - 104 */
     height: 104px;
   }
+
+  .env-flap-shadow {
+    bottom: 86px;
+    height: 104px;
+  }
+
+  .env-seal {
+    left: calc(50% - 23px);
+    bottom: 67px;                  /* flap bottom 90 - 23 */
+    width: 46px;
+    height: 46px;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -266,7 +383,14 @@
   .letter,
   .letter > *,
   .env-flap,
-  .env-hint {
+  .env-seal,
+  .env-hint,
+  .envelope {
     transition: none;
+  }
+
+  .envelope:not(.is-open):hover,
+  .envelope:not(.is-open):focus-within {
+    transform: none;
   }
 }

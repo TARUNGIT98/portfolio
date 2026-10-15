@@ -18,6 +18,9 @@ function Home() {
           <CloudSky />
         </Suspense>
 
+        {/* Night only — hidden in light mode by intro.css */}
+        <div className="sky-stars" aria-hidden="true" />
+
         {/* Softens where sky meets cloud; CloudCutout does the actual blend */}
         <div style={{
           position: "absolute",

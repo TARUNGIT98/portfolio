@@ -1,6 +1,7 @@
 import { useState } from "react";
 import "../styles/projects.css";
 import Tabs from "../components/Tabs";
+import { Globe, Bot, Sparkles } from "lucide-react";
 import reaImage from "../assets/REA.webp";
 import mega from "../assets/megasandesham.webp";
 import nc from "../assets/newscurator.webp";
@@ -26,6 +27,7 @@ const PROJECTS = [
       "Refactored model loading to conditionally import only the models a run actually selects, so a single-model job no longer paid the import cost of all six.",
     tech: "Python, XGBoost, scikit-learn, pandas, YAML",
     image: null,
+    icon: Globe,
     link: null,
     repo: "https://github.com/TARUNGIT98/RealityStreamTarun",
     tags: ["ai"]
@@ -38,6 +40,7 @@ const PROJECTS = [
       "Split detection into its own ROS2 node so inference latency couldn't block the movement loop — the robot keeps responding even when a frame is slow.",
     tech: "ROS2, Python, YOLOv8, OpenCV, Docker, Ubuntu",
     image: null,
+    icon: Bot,
     link: null,
     repo: null,
     tags: ["ai"]
@@ -50,6 +53,7 @@ const PROJECTS = [
       "Reads the active app and browser tab through osascript rather than a browser extension, so one code path covers Chrome, Safari, Arc and Brave with nothing to install; the Claude calls degrade to scripted lines when no API key is set, so it still runs fully offline.",
     tech: "Python, Claude API, AppleScript, launchd",
     image: null,
+    icon: Sparkles,
     badge: "Latest",
     link: null,
     repo: null,
@@ -103,7 +107,12 @@ function Projects() {
         {projects.map((project) => {
           const thumb = project.image
             ? <img src={project.image} alt={project.title} loading="lazy" width="800" height="400" />
-            : <div className="project-placeholder"><span>{project.title}</span></div>;
+            : (
+              <div className="project-placeholder" aria-hidden="true">
+                {project.icon && <project.icon className="project-placeholder-icon" strokeWidth={1.25} />}
+                <small>{project.tech.split(", ").slice(0, 3).join(" · ")}</small>
+              </div>
+            );
 
           return (
             <div key={project.title} className="surface-card project-card">

@@ -56,6 +56,17 @@
   color: #fff;
 }
 
+/* Light mode sits over the pale sky, so go a shade deeper to hold contrast */
+:root:not([data-theme="dark"]) .nav-resume {
+  color: #3a3cc0;
+  border-color: #3a3cc0;
+}
+
+:root:not([data-theme="dark"]) .nav-resume:hover {
+  background: #3a3cc0;
+  color: #fff;
+}
+
 /* Shown only under 820px */
 .nav-burger {
   display: none;

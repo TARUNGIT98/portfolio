@@ -15,9 +15,10 @@ const DAY = {
 /* Vanta always renders a sun; at night it stands in for the moon, so the sun
    values are pale silver rather than warm. */
 const NIGHT = {
-    skyColor: 0x1b2947,
-    cloudColor: 0x55658c,
-    cloudShadowColor: 0x131c33,
+    /* Deep navy rather than slate — the lighter values read as grey haze */
+    skyColor: 0x0c1430,
+    cloudColor: 0x3b4a78,
+    cloudShadowColor: 0x080d20,
     sunColor: 0xe4ebfa,
     sunGlareColor: 0xa8bce4,
     sunlightColor: 0xc3d2ee,

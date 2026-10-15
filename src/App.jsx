@@ -18,8 +18,11 @@ function App() {
       <CareerPath />
       <Projects />
       <Skills />
-      <Dsa />
-      <Learning />
+      {/* Full-width band: groups "how I keep sharp" and breaks up the run of card grids */}
+      <div className="section-band">
+        <Dsa />
+        <Learning />
+      </div>
       <Contact />
       <Footer />
     </ThemeProvider>
