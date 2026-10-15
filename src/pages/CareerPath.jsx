@@ -87,7 +87,8 @@ function CareerPath() {
                             <h3>{item.title}</h3>
                             <div className="career-place">
                                 {item.place}
-                                <span className="career-location"> · {item.location}</span>
+                                <span className="career-sep"> · </span>
+                                <span className="career-location">{item.location}</span>
                             </div>
 
                             {item.highlights && (

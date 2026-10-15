@@ -16,7 +16,7 @@
 /* Three columns: date | rail | content. The rail line runs down the middle
    column; each dot sits on it. */
 .timeline {
-  --rail-x: 200px;               /* width of the date column */
+  --rail-x: 240px;               /* width of the left column */
   position: relative;
   list-style: none;
   max-width: 860px;
@@ -58,6 +58,41 @@
   gap: 0.4rem;
   padding-top: 0.15rem;
   text-align: right;
+}
+
+/* Education is mirrored: what/where on the left of the rail, dates on the
+   right. Jobs keep dates left, details right. */
+.timeline-item.education .timeline-body {
+  grid-column: 1;
+  grid-row: 1;
+  text-align: right;
+}
+
+.timeline-item.education .timeline-when {
+  grid-column: 3;
+  grid-row: 1;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.timeline-item.education .timeline-dot {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Narrower column: location on its own line instead of wrapping mid-phrase */
+.timeline-item.education .career-sep {
+  display: none;
+}
+
+.timeline-item.education .career-location {
+  display: block;
+  margin-top: 0.1rem;
+}
+
+.career-sep {
+  color: var(--color-muted);
+  font-weight: 400;
 }
 
 .timeline-dot {
@@ -190,5 +225,20 @@
 
   .timeline-body {
     grid-area: body;
+  }
+
+  /* No room to mirror on phones — education reads like the jobs */
+  .timeline-item.education .timeline-dot {
+    grid-area: dot;
+  }
+
+  .timeline-item.education .timeline-when {
+    grid-area: when;
+    align-items: center;
+  }
+
+  .timeline-item.education .timeline-body {
+    grid-area: body;
+    text-align: left;
   }
 }
