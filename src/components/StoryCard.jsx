@@ -92,6 +92,7 @@ const StoryCard = () => {
                 className="env-button"
                 onClick={() => setOpen((o) => !o)}
                 aria-expanded={open}
+                data-goatcounter-click="letter-toggle"
                 aria-label={open ? "Close the letter" : "Open the letter"}
             >
                 {open && <span className="env-hint">Close the letter</span>}

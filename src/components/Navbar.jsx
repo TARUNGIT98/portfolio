@@ -57,6 +57,7 @@ const Navbar = () => {
           <a
             className="nav-resume"
             href="/SaiTarunSirapurapu_Resume.pdf"
+            data-goatcounter-click="resume-open"
             target="_blank"
             rel="noopener noreferrer"
           >

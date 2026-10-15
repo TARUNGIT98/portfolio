@@ -86,6 +86,9 @@ const FILTERS = [
   { id: "web", label: "Web" }
 ];
 
+/* Event names for GoatCounter: "demo-ai-news-curator", "source-alfred", … */
+const slug = (title) => title.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
 function Projects() {
   const [filter, setFilter] = useState(FILTERS[0].id);
 
@@ -117,7 +120,7 @@ function Projects() {
           return (
             <div key={project.title} className="surface-card project-card">
               {project.link
-                ? <a href={project.link} target="_blank" rel="noopener noreferrer">{thumb}</a>
+                ? <a href={project.link} target="_blank" rel="noopener noreferrer" data-goatcounter-click={`demo-${slug(project.title)}`}>{thumb}</a>
                 : thumb}
               <div className="project-card-body">
                 <h3>
@@ -138,12 +141,12 @@ function Projects() {
                 {(project.link || project.repo) && (
                   <div className="project-links">
                     {project.link && (
-                      <a href={project.link} target="_blank" rel="noopener noreferrer">
+                      <a href={project.link} target="_blank" rel="noopener noreferrer" data-goatcounter-click={`demo-${slug(project.title)}`}>
                         Live demo →
                       </a>
                     )}
                     {project.repo && (
-                      <a href={project.repo} target="_blank" rel="noopener noreferrer">
+                      <a href={project.repo} target="_blank" rel="noopener noreferrer" data-goatcounter-click={`source-${slug(project.title)}`}>
                         Source →
                       </a>
                     )}

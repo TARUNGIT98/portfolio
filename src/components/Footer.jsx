@@ -39,6 +39,7 @@ function Footer() {
               className="footer-icon"
               href={s.href}
               aria-label={s.label}
+              data-goatcounter-click={`footer-${s.label.toLowerCase()}`}
               target={s.href.startsWith("mailto:") ? undefined : "_blank"}
               rel="noopener noreferrer"
             >

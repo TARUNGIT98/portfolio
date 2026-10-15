@@ -57,8 +57,8 @@ function Home() {
             Open to Full-stack and ML Engineering roles · US-based
           </p>
           <div className="intro-actions">
-            <a className="intro-btn primary" href="#projects">View projects</a>
-            <a className="intro-btn" href="#contact">Get in touch</a>
+            <a className="intro-btn primary" href="#projects" data-goatcounter-click="hero-view-projects">View projects</a>
+            <a className="intro-btn" href="#contact" data-goatcounter-click="hero-get-in-touch">Get in touch</a>
           </div>
         </div>
 

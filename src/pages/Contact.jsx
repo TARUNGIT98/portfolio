@@ -14,6 +14,7 @@ function Contact() {
       <a
         className="contact-button"
         href={`mailto:${EMAIL}?subject=${encodeURIComponent(SUBJECT)}`}
+        data-goatcounter-click="contact-email"
       >
         Connect with me
         <span className="arrow">→</span>
